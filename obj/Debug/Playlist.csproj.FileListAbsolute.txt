@@ -1,0 +1,45 @@
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\bin\Debug\OpenTV.exe
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\bin\Debug\OpenTV.pdb
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\obj\Debug\WindowsApplication1.Form1.resources
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\obj\Debug\Playlist.csproj.GenerateResource.Cache
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\obj\Debug\OpenTV.exe
+C:\Documents and Settings\josephj\Desktop\Playlist\Playlist\obj\Debug\OpenTV.pdb
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\obj\Debug\OpenTV.exe
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\obj\Debug\OpenTV.pdb
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\bin\Debug\OpenTV.exe
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\bin\Debug\OpenTV.pdb
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\obj\Debug\WindowsApplication1.Form1.resources
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Documents and Settings\Jeremy\My Documents\Visual Studio 2008\Projects\Playlist\Playlist\obj\Debug\Playlist.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\OpenTV.exe
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\OpenTV.pdb
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Debug\OpenTV.exe
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Debug\OpenTV.pdb
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\WindowsApplication1.Form1.resources
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\Playlist.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Debug\OpenTV.exe.manifest
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Debug\OpenTV.application
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\OpenTV.exe.manifest
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\obj\Debug\OpenTV.application
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Release\OpenTV.exe.manifest
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Release\OpenTV.application
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Release\OpenTV.exe
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Playlist\Playlist\bin\Release\OpenTV.pdb
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.exe
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.pdb
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\bin\Release\OpenTV.exe.manifest
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\bin\Release\OpenTV.application
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\bin\Release\OpenTV.exe
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\bin\Release\OpenTV.pdb
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\WindowsApplication1.Form1.resources
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\Playlist.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.exe.manifest
+C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.application
+C:\Documents and Settings\Nate\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.pdb
