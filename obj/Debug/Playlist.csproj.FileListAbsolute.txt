@@ -43,3 +43,15 @@ C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\
 C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.exe.manifest
 C:\Documents and Settings\Jeremy\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.application
 C:\Documents and Settings\Nate\Desktop\Senior Design\Jeremy\Playlist\Playlist\obj\Debug\OpenTV.pdb
+C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.exe
+C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.pdb
+C:\Projects\OpenTV\trunk\bin\Release\OpenTV.exe.manifest
+C:\Projects\OpenTV\trunk\bin\Release\OpenTV.application
+C:\Projects\OpenTV\trunk\bin\Release\OpenTV.exe
+C:\Projects\OpenTV\trunk\bin\Release\OpenTV.pdb
+C:\Projects\OpenTV\trunk\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.Form1.resources
+C:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Projects\OpenTV\trunk\obj\Debug\Playlist.csproj.GenerateResource.Cache
+C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.exe.manifest
+C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.application
