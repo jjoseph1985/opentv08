@@ -12,15 +12,12 @@ namespace WindowsApplication1
 {
     public partial class Form1 : Form
     {
-        string /*fileName, fileName2, fileName3,*/ temp;
+        string temp;
         bool check;
-        //string file;
-        //int a;
-        long fl;
-        double fl2, flength;
-        private int nSelectedIndex;
         MainMenu mainMenu = new MainMenu();
         ContextMenu label4ContextMenu = new ContextMenu();
+        string[] imageArray = new string[10];
+        int i = 0;
 
         public Form1()
         {
@@ -41,143 +38,14 @@ namespace WindowsApplication1
             miFile.MenuItems.Add(new MenuItem("&Add Folder", new EventHandler(this.FolderOpen_Clicked), Shortcut.CtrlO));
             miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
+        
+            listBox2.Items.Add(new FileData("C:\\Documents and Settings\\Jeremy\\Desktop\\Nate_Wolverine_2.jpg"));
         }
-
-        //public void button2_Click(object sender, EventArgs e)
-        //{
-        //    check = false;
-
-        //    while (check == false)
-        //    {
-        //        if (openFileDialog1.ShowDialog() == DialogResult.OK)
-        //        {
-        //            fileName = openFileDialog1.FileName;
-        //            FileInfo FI = new FileInfo(fileName);
-        //            if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
-        //            {
-        //                textBox1.Text = fileName;
-        //                check = true;
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Invalid File. Please select an audio file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            check = true;
-        //        }
-        //    }        
-        //}
-
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    FileInfo FI = new FileInfo(fileName);
-        //    temp = FI.Name.ToString(); 
-        //    Files.Items.Add(temp);          
-        //}
-
-        //private void button5_Click(object sender, EventArgs e)
-        //{
-        //    check = false;
-
-        //    while (check == false)
-        //    {
-        //        if (openFileDialog2.ShowDialog() == DialogResult.OK)
-        //        {
-        //            fileName2 = openFileDialog2.FileName;
-        //            FileInfo FI = new FileInfo(fileName2);
-        //            if ((FI.Extension == ".mp4") || (FI.Extension == ".mov") || (FI.Extension == ".avi") || (FI.Extension == ".divx"))
-        //            {
-        //                textBox5.Text = fileName2;
-        //                check = true;
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Invalid File. Please select a video file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            check = true;
-        //        }
-        //    }
-        //}
-
-        //private void button4_Click(object sender, EventArgs e)
-        //{
-        //    FileInfo FI = new FileInfo(fileName2);
-        //    temp = FI.Name.ToString();
-        //    //a = temp.LastIndexOf(".");
-        //    //temp = temp.Substring(0, a);
-        //    listBox1.Items.Add(temp);
-        //}
-
-        //private void button7_Click(object sender, EventArgs e)
-        //{
-        //    check = false;
-
-        //    while (check == false)
-        //    {
-        //        if (openFileDialog3.ShowDialog() == DialogResult.OK)
-        //        {
-        //            fileName3 = openFileDialog3.FileName;
-        //            FileInfo FI = new FileInfo(fileName3);
-        //            if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif"))
-        //            {
-        //                textBox6.Text = fileName3;
-        //                check = true;
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Invalid File. Please select a picture file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //            }
-                    
-        //        }
-        //        else
-        //        {
-        //            check = true;
-        //        }
-        //    }
-        //}
-
-        //private void button6_Click(object sender, EventArgs e)
-        //{
-        //    FileInfo FI = new FileInfo(fileName3);
-        //    temp = FI.Name.ToString();
-
-        //    listBox2.Items.Add(temp);
-        //}
 
         private void Files_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //activates the selected item
-            nSelectedIndex = this.Files.SelectedIndex;
-            string szSelected = (string)this.Files.SelectedItem;
 
-            //instantiates the FileInfo class
-            FileInfo FI = new FileInfo(szSelected);
-
-            //displays the file path to the file info box
-            string filepath = FI.FullName.ToString();
-            this.textBox2.Text = filepath;
-
-            //reinstantiates the FileInfo class for use below
-            FI = new FileInfo(filepath);
-            
-            //displays the file size to the file info box
-            fl = FI.Length;
-            fl2 = Convert.ToDouble(fl);
-            flength = fl2 / 1048576.00;
-            this.textBox4.Text = flength.ToString("0.00") + " MB";
-
-            //displays the file type to the file info box
-            temp = szSelected;
-            int a = temp.LastIndexOf('.');
-            temp = temp.Substring(a + 1);
-            this.textBox3.Text = temp;
-
-            
+            PopulateFields((FileData)this.Files.SelectedItem);
 
         }
 
@@ -203,31 +71,7 @@ namespace WindowsApplication1
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //activates the selected item
-            nSelectedIndex = this.listBox1.SelectedIndex;
-            string szSelected = (string)this.listBox1.SelectedItem;
-
-            //instantiates the FileInfo class
-            FileInfo FI = new FileInfo(szSelected);
-
-            //displays the file path to the file info box
-            string filepath = FI.FullName.ToString();
-            this.textBox2.Text = filepath;
-
-            //reinstantiates the FileInfo class for use below
-            FI = new FileInfo(filepath);
-
-            //displays the file size to the file info box
-            fl = FI.Length;
-            fl2 = Convert.ToDouble(fl);
-            flength = fl2 / 1048576.00;
-            this.textBox4.Text = flength.ToString("0.00") + " MB";
-
-            //displays the file type to the file info box
-            temp = szSelected;
-            int a = temp.LastIndexOf('.');
-            temp = temp.Substring(a + 1);
-            this.textBox3.Text = temp;
+            PopulateFields((FileData)this.listBox1.SelectedItem);
         }
 
         private void listBox1_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -248,39 +92,7 @@ namespace WindowsApplication1
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //sets the picture box thumbnail size
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-
-            //activates the selected item
-            nSelectedIndex = this.listBox2.SelectedIndex;
-            string szSelected = (string)this.listBox2.SelectedItem;
-
-            //instantiates the FileInfo class
-            FileInfo FI = new FileInfo(szSelected);
-
-            //displays the file path to the file info box
-            string filepath = FI.FullName.ToString();
-            this.textBox2.Text = filepath;
-
-            //reinstantiates the FileInfo class for use below
-            FI = new FileInfo(filepath);
-
-            //displays the file size to the file info box
-            fl = FI.Length;
-            fl2 = Convert.ToDouble(fl);
-            flength = fl2 / 1048576.00;
-            this.textBox4.Text = flength.ToString("0.00") + " MB";
-           
-
-            //displays the file type to the file info box
-            temp = szSelected;
-            int a = temp.LastIndexOf('.');
-            temp = temp.Substring(a + 1);
-            this.textBox3.Text = temp;
-
-            //displays the thumbnail image
-            pictureBox2.ImageLocation = filepath;
-
+            PopulateFields((FileData)this.listBox2.SelectedItem);
         }
 
         private void listBox2_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -328,8 +140,12 @@ namespace WindowsApplication1
                         }
                         else if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif") || (FI.Extension == ".jpeg") || (FI.Extension == ".JPG"))
                         {
-                            temp = FI.Name.ToString();
+                            temp = FI.Name;
+                            int a = temp.LastIndexOf('.');
+                            temp = temp.Remove(a, 5);
                             listBox2.Items.Add(temp);
+                            imageArray[i] = FI.FullName;
+                            i++;
                             check = true;
                             tabControl1.SelectTab(PicturePage);
                         }
@@ -398,6 +214,25 @@ namespace WindowsApplication1
         private void FileExit_Clicked(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void PopulateFields(FileData data)
+        {
+            //sets the picture box thumbnail size
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+
+            //displays file size
+            this.textBox4.Text = data.GetFileSize();
+
+            ////displays the thumbnail image
+            pictureBox2.ImageLocation = data.GetFilePath();
+
+            //displays the file path to the file info box
+            this.textBox2.Text = data.GetFilePath();
+
+            //displays the file type
+            this.textBox3.Text = data.GetFileType();
+            
         }
        
     }

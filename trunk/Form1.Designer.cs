@@ -287,6 +287,7 @@ namespace WindowsApplication1
             // 
             // Form1
             // 
+            this.AccessibleName = "";
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -331,7 +332,6 @@ namespace WindowsApplication1
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
@@ -342,6 +342,7 @@ namespace WindowsApplication1
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.TextBox textBox4;
     }
 }
 
