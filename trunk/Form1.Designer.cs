@@ -29,67 +29,67 @@ namespace WindowsApplication1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Files = new System.Windows.Forms.ListBox();
+            this.TransferProgBar = new System.Windows.Forms.ProgressBar();
+            this.TransferButton = new System.Windows.Forms.Button();
+            this.AudioListBox = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.SizeTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.PathTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TypeTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.FileTabs = new System.Windows.Forms.TabControl();
             this.AudioPage = new System.Windows.Forms.TabPage();
             this.VideoPage = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.VideoListBox = new System.Windows.Forms.ListBox();
             this.PicturePage = new System.Windows.Forms.TabPage();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.PictureListBox = new System.Windows.Forms.ListBox();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LogoBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
             this.VideoPage.SuspendLayout();
             this.PicturePage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // progressBar1
+            // TransferProgBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(230, 63);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(135, 23);
-            this.progressBar1.TabIndex = 0;
+            this.TransferProgBar.Location = new System.Drawing.Point(230, 63);
+            this.TransferProgBar.Name = "TransferProgBar";
+            this.TransferProgBar.Size = new System.Drawing.Size(135, 23);
+            this.TransferProgBar.TabIndex = 0;
             // 
-            // button1
+            // TransferButton
             // 
-            this.button1.Location = new System.Drawing.Point(260, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Transfer";
-            this.button1.UseVisualStyleBackColor = true;
+            this.TransferButton.Location = new System.Drawing.Point(260, 34);
+            this.TransferButton.Name = "TransferButton";
+            this.TransferButton.Size = new System.Drawing.Size(75, 23);
+            this.TransferButton.TabIndex = 1;
+            this.TransferButton.Text = "Transfer";
+            this.TransferButton.UseVisualStyleBackColor = true;
             // 
-            // Files
+            // AudioListBox
             // 
-            this.Files.AllowDrop = true;
-            this.Files.FormattingEnabled = true;
-            this.Files.HorizontalScrollbar = true;
-            this.Files.Location = new System.Drawing.Point(-4, 0);
-            this.Files.Name = "Files";
-            this.Files.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.Files.Size = new System.Drawing.Size(375, 498);
-            this.Files.TabIndex = 2;
-            this.Files.SelectedIndexChanged += new System.EventHandler(this.Files_SelectedIndexChanged);
+            this.AudioListBox.AllowDrop = true;
+            this.AudioListBox.FormattingEnabled = true;
+            this.AudioListBox.HorizontalScrollbar = true;
+            this.AudioListBox.Location = new System.Drawing.Point(-4, 0);
+            this.AudioListBox.Name = "AudioListBox";
+            this.AudioListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.AudioListBox.Size = new System.Drawing.Size(375, 498);
+            this.AudioListBox.TabIndex = 2;
+            this.AudioListBox.SelectedIndexChanged += new System.EventHandler(this.Files_SelectedIndexChanged);
             // 
             // openFileDialog1
             // 
@@ -99,11 +99,11 @@ namespace WindowsApplication1
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.SizeTextBox);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.PathTextBox);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.TypeTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(389, 189);
             this.groupBox1.Name = "groupBox1";
@@ -112,14 +112,14 @@ namespace WindowsApplication1
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Info";
             // 
-            // textBox4
+            // SizeTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(11, 116);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(165, 20);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SizeTextBox.Location = new System.Drawing.Point(11, 116);
+            this.SizeTextBox.Name = "SizeTextBox";
+            this.SizeTextBox.ReadOnly = true;
+            this.SizeTextBox.Size = new System.Drawing.Size(165, 20);
+            this.SizeTextBox.TabIndex = 8;
+            this.SizeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -130,13 +130,13 @@ namespace WindowsApplication1
             this.label3.TabIndex = 11;
             this.label3.Text = "Size";
             // 
-            // textBox2
+            // PathTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(11, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(165, 20);
-            this.textBox2.TabIndex = 6;
+            this.PathTextBox.Location = new System.Drawing.Point(11, 43);
+            this.PathTextBox.Name = "PathTextBox";
+            this.PathTextBox.ReadOnly = true;
+            this.PathTextBox.Size = new System.Drawing.Size(165, 20);
+            this.PathTextBox.TabIndex = 6;
             // 
             // label2
             // 
@@ -147,14 +147,14 @@ namespace WindowsApplication1
             this.label2.TabIndex = 10;
             this.label2.Text = "Type";
             // 
-            // textBox3
+            // TypeTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(11, 79);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(165, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TypeTextBox.Location = new System.Drawing.Point(11, 79);
+            this.TypeTextBox.Name = "TypeTextBox";
+            this.TypeTextBox.ReadOnly = true;
+            this.TypeTextBox.Size = new System.Drawing.Size(165, 20);
+            this.TypeTextBox.TabIndex = 7;
+            this.TypeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -165,20 +165,20 @@ namespace WindowsApplication1
             this.label1.TabIndex = 9;
             this.label1.Text = "Path";
             // 
-            // tabControl1
+            // FileTabs
             // 
-            this.tabControl1.Controls.Add(this.AudioPage);
-            this.tabControl1.Controls.Add(this.VideoPage);
-            this.tabControl1.Controls.Add(this.PicturePage);
-            this.tabControl1.Location = new System.Drawing.Point(12, 8);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(198, 527);
-            this.tabControl1.TabIndex = 13;
+            this.FileTabs.Controls.Add(this.AudioPage);
+            this.FileTabs.Controls.Add(this.VideoPage);
+            this.FileTabs.Controls.Add(this.PicturePage);
+            this.FileTabs.Location = new System.Drawing.Point(12, 8);
+            this.FileTabs.Name = "FileTabs";
+            this.FileTabs.SelectedIndex = 0;
+            this.FileTabs.Size = new System.Drawing.Size(198, 527);
+            this.FileTabs.TabIndex = 13;
             // 
             // AudioPage
             // 
-            this.AudioPage.Controls.Add(this.Files);
+            this.AudioPage.Controls.Add(this.AudioListBox);
             this.AudioPage.Location = new System.Drawing.Point(4, 22);
             this.AudioPage.Name = "AudioPage";
             this.AudioPage.Padding = new System.Windows.Forms.Padding(3);
@@ -189,7 +189,7 @@ namespace WindowsApplication1
             // 
             // VideoPage
             // 
-            this.VideoPage.Controls.Add(this.listBox1);
+            this.VideoPage.Controls.Add(this.VideoListBox);
             this.VideoPage.Location = new System.Drawing.Point(4, 22);
             this.VideoPage.Name = "VideoPage";
             this.VideoPage.Padding = new System.Windows.Forms.Padding(3);
@@ -198,21 +198,21 @@ namespace WindowsApplication1
             this.VideoPage.Text = "Video Files";
             this.VideoPage.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // VideoListBox
             // 
-            this.listBox1.AllowDrop = true;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(-4, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(375, 498);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.VideoListBox.AllowDrop = true;
+            this.VideoListBox.FormattingEnabled = true;
+            this.VideoListBox.HorizontalScrollbar = true;
+            this.VideoListBox.Location = new System.Drawing.Point(-4, 0);
+            this.VideoListBox.Name = "VideoListBox";
+            this.VideoListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.VideoListBox.Size = new System.Drawing.Size(375, 498);
+            this.VideoListBox.TabIndex = 3;
+            this.VideoListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // PicturePage
             // 
-            this.PicturePage.Controls.Add(this.listBox2);
+            this.PicturePage.Controls.Add(this.PictureListBox);
             this.PicturePage.Location = new System.Drawing.Point(4, 22);
             this.PicturePage.Name = "PicturePage";
             this.PicturePage.Size = new System.Drawing.Size(190, 501);
@@ -220,17 +220,17 @@ namespace WindowsApplication1
             this.PicturePage.Text = "Picture Files";
             this.PicturePage.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // PictureListBox
             // 
-            this.listBox2.AllowDrop = true;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.HorizontalScrollbar = true;
-            this.listBox2.Location = new System.Drawing.Point(-4, 0);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox2.Size = new System.Drawing.Size(375, 498);
-            this.listBox2.TabIndex = 3;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.PictureListBox.AllowDrop = true;
+            this.PictureListBox.FormattingEnabled = true;
+            this.PictureListBox.HorizontalScrollbar = true;
+            this.PictureListBox.Location = new System.Drawing.Point(-4, 0);
+            this.PictureListBox.Name = "PictureListBox";
+            this.PictureListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.PictureListBox.Size = new System.Drawing.Size(375, 498);
+            this.PictureListBox.TabIndex = 3;
+            this.PictureListBox.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // openFileDialog2
             // 
@@ -245,16 +245,16 @@ namespace WindowsApplication1
                 "es(*.*)|*.*";
             this.openFileDialog3.Multiselect = true;
             // 
-            // pictureBox1
+            // LogoBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(400, 402);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 133);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.LogoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.LogoBox.Image = ((System.Drawing.Image)(resources.GetObject("LogoBox.Image")));
+            this.LogoBox.Location = new System.Drawing.Point(400, 402);
+            this.LogoBox.Name = "LogoBox";
+            this.LogoBox.Size = new System.Drawing.Size(176, 133);
+            this.LogoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.LogoBox.TabIndex = 14;
+            this.LogoBox.TabStop = false;
             // 
             // openFileDialog4
             // 
@@ -265,7 +265,7 @@ namespace WindowsApplication1
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox2);
+            this.groupBox2.Controls.Add(this.PreviewBox);
             this.groupBox2.Location = new System.Drawing.Point(389, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(189, 146);
@@ -273,13 +273,13 @@ namespace WindowsApplication1
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preview";
             // 
-            // pictureBox2
+            // PreviewBox
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(177, 121);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.PreviewBox.Location = new System.Drawing.Point(6, 19);
+            this.PreviewBox.Name = "PreviewBox";
+            this.PreviewBox.Size = new System.Drawing.Size(177, 121);
+            this.PreviewBox.TabIndex = 0;
+            this.PreviewBox.TabStop = false;
             // 
             // folderBrowserDialog1
             // 
@@ -295,54 +295,54 @@ namespace WindowsApplication1
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(588, 547);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.LogoBox);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.FileTabs);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.TransferButton);
+            this.Controls.Add(this.TransferProgBar);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "OpenTV File Manager";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.FileTabs.ResumeLayout(false);
             this.AudioPage.ResumeLayout(false);
             this.VideoPage.ResumeLayout(false);
             this.PicturePage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox Files;
+        private System.Windows.Forms.ProgressBar TransferProgBar;
+        private System.Windows.Forms.Button TransferButton;
+        private System.Windows.Forms.ListBox AudioListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl FileTabs;
         private System.Windows.Forms.TabPage AudioPage;
         private System.Windows.Forms.TabPage VideoPage;
         private System.Windows.Forms.TabPage PicturePage;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox VideoListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox PictureListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PathTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TypeTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox LogoBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.PictureBox PreviewBox;
+        public System.Windows.Forms.TextBox SizeTextBox;
     }
 }
 

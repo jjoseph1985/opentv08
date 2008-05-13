@@ -24,12 +24,12 @@ namespace WindowsApplication1
             InitializeComponent();
 
             //gives event handler notification of control forms
-            this.Files.DragDrop += new System.Windows.Forms.DragEventHandler(this.Files_DragDrop);
-            this.Files.DragEnter += new System.Windows.Forms.DragEventHandler(this.Files_DragEnter);
-            this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
-            this.listBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
-            this.listBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox2_DragDrop);
-            this.listBox2.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox2_DragEnter);
+            this.AudioListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.Files_DragDrop);
+            this.AudioListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Files_DragEnter);
+            this.VideoListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
+            this.VideoListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
+            this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox2_DragDrop);
+            this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox2_DragEnter);
 
             this.Menu = mainMenu;
             MenuItem miFile = mainMenu.MenuItems.Add("&File");
@@ -39,13 +39,13 @@ namespace WindowsApplication1
             miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
         
-            listBox2.Items.Add(new FileData("C:\\Documents and Settings\\Jeremy\\Desktop\\Nate_Wolverine_2.jpg"));
+            PictureListBox.Items.Add(new FileData("C:\\Documents and Settings\\Jeremy\\Desktop\\Nate_Wolverine_2.jpg"));
         }
 
         private void Files_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            PopulateFields((FileData)this.Files.SelectedItem);
+            PopulateFields((FileData)this.AudioListBox.SelectedItem);
 
         }
 
@@ -65,13 +65,13 @@ namespace WindowsApplication1
             for (i = 0; i < s.Length; i++)
             {
                 //s[i] = s[i].Substring(s[i].LastIndexOf("\\") + 1);
-                Files.Items.Add(s[i]);
+                AudioListBox.Items.Add(s[i]);
             }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PopulateFields((FileData)this.listBox1.SelectedItem);
+            PopulateFields((FileData)this.VideoListBox.SelectedItem);
         }
 
         private void listBox1_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -87,12 +87,12 @@ namespace WindowsApplication1
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
             for (i = 0; i < s.Length; i++)
-                listBox1.Items.Add(s[i]);
+                VideoListBox.Items.Add(s[i]);
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PopulateFields((FileData)this.listBox2.SelectedItem);
+            PopulateFields((FileData)this.PictureListBox.SelectedItem);
         }
 
         private void listBox2_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -108,7 +108,7 @@ namespace WindowsApplication1
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
             for (i = 0; i < s.Length; i++)
-                listBox2.Items.Add(s[i]);
+                PictureListBox.Items.Add(s[i]);
         }
 
         private void FileOpen_Clicked(object sender, System.EventArgs e)
@@ -127,27 +127,27 @@ namespace WindowsApplication1
                         if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
                         {
                             temp = FI.Name.ToString();
-                            Files.Items.Add(temp);
+                            AudioListBox.Items.Add(temp);
                             check = true;
-                            tabControl1.SelectTab(AudioPage);
+                            FileTabs.SelectTab(AudioPage);
                         }
                         else if ((FI.Extension == ".avi") || (FI.Extension == ".mov") || (FI.Extension == ".divx") || (FI.Extension == ".MP4"))
                         {
                             temp = FI.Name.ToString();
-                            listBox1.Items.Add(temp);
+                            VideoListBox.Items.Add(temp);
                             check = true;
-                            tabControl1.SelectTab(VideoPage);
+                            FileTabs.SelectTab(VideoPage);
                         }
                         else if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif") || (FI.Extension == ".jpeg") || (FI.Extension == ".JPG"))
                         {
                             temp = FI.Name;
                             int a = temp.LastIndexOf('.');
                             temp = temp.Remove(a, 5);
-                            listBox2.Items.Add(temp);
+                            PictureListBox.Items.Add(temp);
                             imageArray[i] = FI.FullName;
                             i++;
                             check = true;
-                            tabControl1.SelectTab(PicturePage);
+                            FileTabs.SelectTab(PicturePage);
                         }
                         else
                         {
@@ -179,23 +179,23 @@ namespace WindowsApplication1
                         if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
                         {
                             temp = FI.Name.ToString();
-                            Files.Items.Add(temp);
+                            AudioListBox.Items.Add(temp);
                             check = true;
-                            tabControl1.SelectTab(AudioPage);
+                            FileTabs.SelectTab(AudioPage);
                         }
                         else if ((FI.Extension == ".avi") || (FI.Extension == ".mov") || (FI.Extension == ".divx") || (FI.Extension == ".MP4"))
                         {
                             temp = FI.Name.ToString();
-                            listBox1.Items.Add(temp);
+                            VideoListBox.Items.Add(temp);
                             check = true;
-                            tabControl1.SelectTab(VideoPage);
+                            FileTabs.SelectTab(VideoPage);
                         }
                         else if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif") || (FI.Extension == ".jpeg") || (FI.Extension == ".JPG"))
                         {
                             temp = FI.Name.ToString();
-                            listBox2.Items.Add(temp);
+                            PictureListBox.Items.Add(temp);
                             check = true;
-                            tabControl1.SelectTab(PicturePage);
+                            FileTabs.SelectTab(PicturePage);
                         }
                         else
                         {
@@ -219,19 +219,19 @@ namespace WindowsApplication1
         private void PopulateFields(FileData data)
         {
             //sets the picture box thumbnail size
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            PreviewBox.SizeMode = PictureBoxSizeMode.Zoom;
 
             //displays file size
-            this.textBox4.Text = data.GetFileSize();
+            this.SizeTextBox.Text = data.GetFileSize();
 
             ////displays the thumbnail image
-            pictureBox2.ImageLocation = data.GetFilePath();
+            PreviewBox.ImageLocation = data.GetFilePath();
 
             //displays the file path to the file info box
-            this.textBox2.Text = data.GetFilePath();
+            this.PathTextBox.Text = data.GetFilePath();
 
             //displays the file type
-            this.textBox3.Text = data.GetFileType();
+            this.TypeTextBox.Text = data.GetFileType();
             
         }
        
