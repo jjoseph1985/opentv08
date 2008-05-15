@@ -16,20 +16,18 @@ namespace WindowsApplication1
         bool check;
         MainMenu mainMenu = new MainMenu();
         ContextMenu label4ContextMenu = new ContextMenu();
-        string[] imageArray = new string[10];
-        int i = 0;
 
         public Form1()
         {
             InitializeComponent();
 
             //gives event handler notification of control forms
-            this.AudioListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.Files_DragDrop);
-            this.AudioListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Files_DragEnter);
-            this.VideoListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
-            this.VideoListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
-            this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox2_DragDrop);
-            this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox2_DragEnter);
+            this.AudioListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.AudioListBox_DragDrop);
+            this.AudioListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.AudioListBox_DragEnter);
+            this.VideoListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.VideoListBox_DragDrop);
+            this.VideoListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.VideoListBox_DragEnter);
+            this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragDrop);
+            this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
 
             this.Menu = mainMenu;
             MenuItem miFile = mainMenu.MenuItems.Add("&File");
@@ -42,14 +40,14 @@ namespace WindowsApplication1
             PictureListBox.Items.Add(new FileData("C:\\Documents and Settings\\Jeremy\\Desktop\\Nate_Wolverine_2.jpg"));
         }
 
-        private void Files_SelectedIndexChanged(object sender, EventArgs e)
+        private void AudioListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             PopulateFields((FileData)this.AudioListBox.SelectedItem);
 
         }
 
-        private void Files_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        private void AudioListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.All;
@@ -57,7 +55,7 @@ namespace WindowsApplication1
                 e.Effect = DragDropEffects.None;
         }
 
-        private void Files_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        private void AudioListBox_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
@@ -69,12 +67,12 @@ namespace WindowsApplication1
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void VideoListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateFields((FileData)this.VideoListBox.SelectedItem);
         }
 
-        private void listBox1_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        private void VideoListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.All;
@@ -82,7 +80,7 @@ namespace WindowsApplication1
                 e.Effect = DragDropEffects.None;
         }
 
-        private void listBox1_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        private void VideoListBox_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
@@ -90,12 +88,12 @@ namespace WindowsApplication1
                 VideoListBox.Items.Add(s[i]);
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void PictureListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateFields((FileData)this.PictureListBox.SelectedItem);
         }
 
-        private void listBox2_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+        private void PictureListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.All;
@@ -103,7 +101,7 @@ namespace WindowsApplication1
                 e.Effect = DragDropEffects.None;
         }
 
-        private void listBox2_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        private void PictureListBox_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
@@ -121,7 +119,6 @@ namespace WindowsApplication1
                 {
                     foreach(string fileName in openFileDialog4.FileNames)
                     {
-                        //fileName = openFileDialog4.FileName;
                         FileInfo FI = new FileInfo(fileName);
 
                         if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
@@ -142,10 +139,8 @@ namespace WindowsApplication1
                         {
                             temp = FI.Name;
                             int a = temp.LastIndexOf('.');
-                            temp = temp.Remove(a, 5);
+                            temp = temp.Remove(a, 4);
                             PictureListBox.Items.Add(temp);
-                            imageArray[i] = FI.FullName;
-                            i++;
                             check = true;
                             FileTabs.SelectTab(PicturePage);
                         }

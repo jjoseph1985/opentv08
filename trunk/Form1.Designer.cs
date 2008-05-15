@@ -89,7 +89,7 @@ namespace WindowsApplication1
             this.AudioListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.AudioListBox.Size = new System.Drawing.Size(375, 498);
             this.AudioListBox.TabIndex = 2;
-            this.AudioListBox.SelectedIndexChanged += new System.EventHandler(this.Files_SelectedIndexChanged);
+            this.AudioListBox.SelectedIndexChanged += new System.EventHandler(this.AudioListBox_SelectedIndexChanged);
             // 
             // openFileDialog1
             // 
@@ -208,7 +208,7 @@ namespace WindowsApplication1
             this.VideoListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.VideoListBox.Size = new System.Drawing.Size(375, 498);
             this.VideoListBox.TabIndex = 3;
-            this.VideoListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.VideoListBox.SelectedIndexChanged += new System.EventHandler(this.VideoListBox_SelectedIndexChanged);
             // 
             // PicturePage
             // 
@@ -230,7 +230,7 @@ namespace WindowsApplication1
             this.PictureListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.PictureListBox.Size = new System.Drawing.Size(375, 498);
             this.PictureListBox.TabIndex = 3;
-            this.PictureListBox.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.PictureListBox.SelectedIndexChanged += new System.EventHandler(this.PictureListBox_SelectedIndexChanged);
             // 
             // openFileDialog2
             // 
