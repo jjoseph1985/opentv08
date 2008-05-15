@@ -227,21 +227,30 @@ namespace WindowsApplication1
 
                 if (FD.GetFileType() == "Audio")
                 {
-                    AudioListBox.Items.Add(FD);
+                    if (AudioListBox.Items.Contains(FD.Path) == false)
+                    {
+                        AudioListBox.Items.Add(FD);                       
+                        FileTabs.SelectTab(AudioPage);
+                    }
                     check = true;
-                    FileTabs.SelectTab(AudioPage);
                 }
                 else if (FD.GetFileType() == "Video")
                 {
-                    VideoListBox.Items.Add(FD);
+                    if (VideoListBox.Items.Contains(FD.Path) == false)
+                    {
+                        VideoListBox.Items.Add(FD);
+                        FileTabs.SelectTab(VideoPage);
+                    }
                     check = true;
-                    FileTabs.SelectTab(VideoPage);
                 }
                 else if (FD.GetFileType() == "Image")
                 {
-                    PictureListBox.Items.Add(FD);
+                    if(PictureListBox.Items.Contains(FD.Path) == false)
+                    {
+                        PictureListBox.Items.Add(FD);
+                        FileTabs.SelectTab(PicturePage);
+                    }
                     check = true;
-                    FileTabs.SelectTab(PicturePage);
                 }
                 else if (FD.GetFileType() == "Invalid")
                 {
