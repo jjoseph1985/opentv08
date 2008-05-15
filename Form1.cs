@@ -12,7 +12,6 @@ namespace WindowsApplication1
 {
     public partial class Form1 : Form
     {
-        string temp;
         bool check;
         MainMenu mainMenu = new MainMenu();
         ContextMenu label4ContextMenu = new ContextMenu();
@@ -24,10 +23,13 @@ namespace WindowsApplication1
             //gives event handler notification of control forms
             this.AudioListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.AudioListBox_DragDrop);
             this.AudioListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.AudioListBox_DragEnter);
+            this.AudioListBox.KeyDown += new KeyEventHandler(AudioListBox_KeyDown);
             this.VideoListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.VideoListBox_DragDrop);
             this.VideoListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.VideoListBox_DragEnter);
+            this.VideoListBox.KeyDown += new KeyEventHandler(VideoListBox_KeyDown);
             this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragDrop);
             this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
+            this.PictureListBox.KeyDown += new KeyEventHandler(PictureListBox_KeyDown);
 
             this.Menu = mainMenu;
             MenuItem miFile = mainMenu.MenuItems.Add("&File");
@@ -36,10 +38,41 @@ namespace WindowsApplication1
             miFile.MenuItems.Add(new MenuItem("&Add Folder", new EventHandler(this.FolderOpen_Clicked), Shortcut.CtrlO));
             miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
-        
-            PictureListBox.Items.Add(new FileData("C:\\Documents and Settings\\Jeremy\\Desktop\\Nate_Wolverine_2.jpg"));
         }
 
+
+        /// <summary>
+        /// Key Down Events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void VideoListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 46)
+            {
+                this.VideoListBox.Items.RemoveAt(VideoListBox.SelectedIndex);
+                ClearFields();
+            }
+        }
+
+        void AudioListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 46)
+            {
+                this.AudioListBox.Items.RemoveAt(AudioListBox.SelectedIndex);
+                ClearFields();
+            }
+        }
+
+        void PictureListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 46)
+            {
+                this.PictureListBox.Items.RemoveAt(PictureListBox.SelectedIndex);
+                ClearFields();
+            }
+        }
+        
         private void AudioListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -62,8 +95,7 @@ namespace WindowsApplication1
             int i;
             for (i = 0; i < s.Length; i++)
             {
-                //s[i] = s[i].Substring(s[i].LastIndexOf("\\") + 1);
-                AudioListBox.Items.Add(s[i]);
+                AddFiles(s[i]);
             }
         }
 
@@ -85,12 +117,13 @@ namespace WindowsApplication1
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
             for (i = 0; i < s.Length; i++)
-                VideoListBox.Items.Add(s[i]);
+                AddFiles(s[i]);
         }
 
         private void PictureListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PopulateFields((FileData)this.PictureListBox.SelectedItem);
+            if(PictureListBox.SelectedIndex != -1)
+                PopulateFields((FileData)this.PictureListBox.SelectedItem);
         }
 
         private void PictureListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -106,7 +139,7 @@ namespace WindowsApplication1
             string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int i;
             for (i = 0; i < s.Length; i++)
-                PictureListBox.Items.Add(s[i]);
+                AddFiles(s[i]);
         }
 
         private void FileOpen_Clicked(object sender, System.EventArgs e)
@@ -117,37 +150,9 @@ namespace WindowsApplication1
             {
                 if (openFileDialog4.ShowDialog() == DialogResult.OK)
                 {
-                    foreach(string fileName in openFileDialog4.FileNames)
+                    foreach (string fileName in openFileDialog4.FileNames)
                     {
-                        FileInfo FI = new FileInfo(fileName);
-
-                        if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
-                        {
-                            temp = FI.Name.ToString();
-                            AudioListBox.Items.Add(temp);
-                            check = true;
-                            FileTabs.SelectTab(AudioPage);
-                        }
-                        else if ((FI.Extension == ".avi") || (FI.Extension == ".mov") || (FI.Extension == ".divx") || (FI.Extension == ".MP4"))
-                        {
-                            temp = FI.Name.ToString();
-                            VideoListBox.Items.Add(temp);
-                            check = true;
-                            FileTabs.SelectTab(VideoPage);
-                        }
-                        else if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif") || (FI.Extension == ".jpeg") || (FI.Extension == ".JPG"))
-                        {
-                            temp = FI.Name;
-                            int a = temp.LastIndexOf('.');
-                            temp = temp.Remove(a, 4);
-                            PictureListBox.Items.Add(temp);
-                            check = true;
-                            FileTabs.SelectTab(PicturePage);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid File. Please select a media file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                        AddFiles(fileName);
                     }
                 }
                 else
@@ -165,37 +170,11 @@ namespace WindowsApplication1
             {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    string foldername = this.folderBrowserDialog1.SelectedPath;
+                    string folderName = this.folderBrowserDialog1.SelectedPath;
 
-                    foreach(string fileName in Directory.GetFiles(foldername))
-                    {
-                        FileInfo FI = new FileInfo(fileName);
-
-                        if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
-                        {
-                            temp = FI.Name.ToString();
-                            AudioListBox.Items.Add(temp);
-                            check = true;
-                            FileTabs.SelectTab(AudioPage);
-                        }
-                        else if ((FI.Extension == ".avi") || (FI.Extension == ".mov") || (FI.Extension == ".divx") || (FI.Extension == ".MP4"))
-                        {
-                            temp = FI.Name.ToString();
-                            VideoListBox.Items.Add(temp);
-                            check = true;
-                            FileTabs.SelectTab(VideoPage);
-                        }
-                        else if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif") || (FI.Extension == ".jpeg") || (FI.Extension == ".JPG"))
-                        {
-                            temp = FI.Name.ToString();
-                            PictureListBox.Items.Add(temp);
-                            check = true;
-                            FileTabs.SelectTab(PicturePage);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid file. File will not be added.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                    foreach (string fileName in Directory.GetFiles(folderName))
+                    {   
+                        AddFiles(fileName);
                     }
                 }
                 else
@@ -226,9 +205,48 @@ namespace WindowsApplication1
             this.PathTextBox.Text = data.GetFilePath();
 
             //displays the file type
-            this.TypeTextBox.Text = data.GetFileType();
+            this.TypeTextBox.Text = data.GetFileExtension();
             
         }
-       
+
+        private void ClearFields()
+        {
+            this.SizeTextBox.Clear();
+
+            this.PathTextBox.Clear();
+
+            this.PreviewBox.ImageLocation = "";
+
+            this.TypeTextBox.Clear();
+        }
+
+        private void AddFiles(string fileName)
+        {
+                FileInfo FI = new FileInfo(fileName);
+                FileData FD = new FileData(FI.FullName);
+
+                if (FD.GetFileType() == "Audio")
+                {
+                    AudioListBox.Items.Add(FD);
+                    check = true;
+                    FileTabs.SelectTab(AudioPage);
+                }
+                else if (FD.GetFileType() == "Video")
+                {
+                    VideoListBox.Items.Add(FD);
+                    check = true;
+                    FileTabs.SelectTab(VideoPage);
+                }
+                else if (FD.GetFileType() == "Image")
+                {
+                    PictureListBox.Items.Add(FD);
+                    check = true;
+                    FileTabs.SelectTab(PicturePage);
+                }
+                else if (FD.GetFileType() == "Invalid")
+                {
+                    MessageBox.Show("Invalid File. Please select a media file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }         
+        }
     }
 }
