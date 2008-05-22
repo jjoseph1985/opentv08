@@ -58,6 +58,7 @@ namespace WindowsApplication1
             {
                 this.VideoListBox.Items.RemoveAt(VideoListBox.SelectedIndex);
                 ClearFields();
+                CreateXML("Video");
             }
         }
 
@@ -67,6 +68,7 @@ namespace WindowsApplication1
             {
                 this.AudioListBox.Items.RemoveAt(AudioListBox.SelectedIndex);
                 ClearFields();
+                CreateXML("Audio");
             }
         }
 
@@ -76,6 +78,7 @@ namespace WindowsApplication1
             {
                 this.PictureListBox.Items.RemoveAt(PictureListBox.SelectedIndex);
                 ClearFields();
+                CreateXML("Image");
             }
         }
         
@@ -317,7 +320,7 @@ namespace WindowsApplication1
             
             //IMAGES
             filename = Application.StartupPath + "\\Image.xml";
-            if (filename != null)
+            if (File.Exists(filename) == true)
             {
                 FileStream fs = new FileStream(filename, FileMode.Open);
 
@@ -330,7 +333,7 @@ namespace WindowsApplication1
 
             //VIDEOS
             filename = Application.StartupPath + "\\Video.xml";
-            if (filename != null)
+            if (File.Exists(filename) == true)
             {
                 FileStream fs = new FileStream(filename, FileMode.Open);
 
@@ -343,7 +346,7 @@ namespace WindowsApplication1
 
             //AUDIO
             filename = Application.StartupPath + "\\Audio.xml";
-            if (filename != null)
+            if (File.Exists(filename) == true)
             {
                 FileStream fs = new FileStream(filename, FileMode.Open);
 
