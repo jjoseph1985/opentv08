@@ -7,6 +7,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.DirectoryServices;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using System.Collections;
 
 namespace WindowsApplication1
 {
@@ -30,7 +34,9 @@ namespace WindowsApplication1
             this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragDrop);
             this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
             this.PictureListBox.KeyDown += new KeyEventHandler(PictureListBox_KeyDown);
-            
+
+            ReadXML();
+
             this.Menu = mainMenu;
             MenuItem miFile = mainMenu.MenuItems.Add("&File");
             miFile.MenuItems.Add(new MenuItem("&Add File(s)", new EventHandler(this.FileOpen_Clicked), Shortcut.CtrlF));
@@ -222,6 +228,8 @@ namespace WindowsApplication1
 
         private void AddFiles(string fileName)
         {
+            try
+            {
                 FileInfo FI = new FileInfo(fileName);
                 FileData FD = new FileData(FI.FullName);
 
@@ -229,10 +237,11 @@ namespace WindowsApplication1
                 {
                     if (AudioListBox.Items.Contains(FD.Path) == false)
                     {
-                        AudioListBox.Items.Add(FD);                       
+                        AudioListBox.Items.Add(FD);
                         FileTabs.SelectTab(AudioPage);
                     }
                     check = true;
+                    CreateXML("Audio");
                 }
                 else if (FD.GetFileType() == "Video")
                 {
@@ -242,20 +251,26 @@ namespace WindowsApplication1
                         FileTabs.SelectTab(VideoPage);
                     }
                     check = true;
+                    CreateXML("Video");
                 }
                 else if (FD.GetFileType() == "Image")
                 {
-                    if(PictureListBox.Items.Contains(FD.Path) == false)
+                    if (PictureListBox.Items.Contains(FD.Path) == false)
                     {
                         PictureListBox.Items.Add(FD);
                         FileTabs.SelectTab(PicturePage);
                     }
                     check = true;
+                    CreateXML("Image");
                 }
                 else if (FD.GetFileType() == "Invalid")
                 {
-                    MessageBox.Show("Invalid File. Please select a media file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }         
+                    MessageBox.Show("Invalid File: " + fileName, "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void FullScreenButton_Click(object sender, EventArgs e)
@@ -269,6 +284,75 @@ namespace WindowsApplication1
                 imagePreview.FullScreenPictureBox.ImageLocation = FD.GetFilePath();
             }
             
+        }
+
+        private void CreateXML(string type)
+        {
+            ListBox myBox = new ListBox();
+            if (type == "Audio")
+                myBox = this.AudioListBox;
+            else if (type == "Image")
+                myBox = this.PictureListBox;
+            else
+                myBox = this.VideoListBox;
+
+            string filename = Application.StartupPath + "\\" + type + ".xml";
+
+            ArrayList theFiles = new ArrayList();
+            foreach (FileData theFile in myBox.Items)
+            {
+                theFiles.Add(theFile);
+            }
+
+            XmlSerializer serializer = new XmlSerializer(typeof(ArrayList), new Type[] { typeof(FileData) });
+            TextWriter writer = new StreamWriter(filename);
+            serializer.Serialize(writer, theFiles);
+            writer.Close();
+        }
+
+        protected void ReadXML()
+        {
+            string filename;
+            XmlSerializer serializer = new XmlSerializer(typeof(ArrayList), new Type[] { typeof(FileData) });
+            
+            //IMAGES
+            filename = Application.StartupPath + "\\Image.xml";
+            if (filename != null)
+            {
+                FileStream fs = new FileStream(filename, FileMode.Open);
+
+                ArrayList list = serializer.Deserialize(fs) as ArrayList;
+                foreach (FileData o in list)
+                {
+                    this.PictureListBox.Items.Add(o);
+                }
+            }
+
+            //VIDEOS
+            filename = Application.StartupPath + "\\Video.xml";
+            if (filename != null)
+            {
+                FileStream fs = new FileStream(filename, FileMode.Open);
+
+                ArrayList list = serializer.Deserialize(fs) as ArrayList;
+                foreach (FileData o in list)
+                {
+                    this.VideoListBox.Items.Add(o);
+                }
+            }
+
+            //AUDIO
+            filename = Application.StartupPath + "\\Audio.xml";
+            if (filename != null)
+            {
+                FileStream fs = new FileStream(filename, FileMode.Open);
+
+                ArrayList list = serializer.Deserialize(fs) as ArrayList;
+                foreach (FileData o in list)
+                {
+                    this.AudioListBox.Items.Add(o);
+                }
+            }
         }
     }
 }

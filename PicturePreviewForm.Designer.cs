@@ -38,6 +38,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.FullScreenPictureBox.BackColor = System.Drawing.SystemColors.ControlText;
+            this.FullScreenPictureBox.InitialImage = null;
             this.FullScreenPictureBox.Location = new System.Drawing.Point(0, 0);
             this.FullScreenPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.FullScreenPictureBox.Name = "FullScreenPictureBox";
@@ -45,7 +46,7 @@
             this.FullScreenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.FullScreenPictureBox.TabIndex = 0;
             this.FullScreenPictureBox.TabStop = false;
-            this.FullScreenPictureBox.LoadCompleted +=new System.ComponentModel.AsyncCompletedEventHandler(FullScreenPictureBox_LoadCompleted);
+            this.FullScreenPictureBox.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.FullScreenPictureBox_LoadCompleted);
             // 
             // PicturePreviewForm
             // 
