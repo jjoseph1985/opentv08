@@ -55,3 +55,4 @@ C:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.Properties.Resources.reso
 C:\Projects\OpenTV\trunk\obj\Debug\Playlist.csproj.GenerateResource.Cache
 C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.exe.manifest
 C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.application
+C:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.PicturePreviewForm.resources

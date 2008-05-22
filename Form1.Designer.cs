@@ -53,6 +53,7 @@ namespace WindowsApplication1
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.FullScreenButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -285,6 +286,17 @@ namespace WindowsApplication1
             // 
             this.folderBrowserDialog1.ShowNewFolderButton = false;
             // 
+            // FullScreenButton
+            // 
+            this.FullScreenButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FullScreenButton.BackgroundImage")));
+            this.FullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FullScreenButton.Location = new System.Drawing.Point(536, 154);
+            this.FullScreenButton.Name = "FullScreenButton";
+            this.FullScreenButton.Size = new System.Drawing.Size(36, 28);
+            this.FullScreenButton.TabIndex = 16;
+            this.FullScreenButton.UseVisualStyleBackColor = true;
+            this.FullScreenButton.Click += new System.EventHandler(this.FullScreenButton_Click);
+            // 
             // Form1
             // 
             this.AccessibleName = "";
@@ -294,7 +306,9 @@ namespace WindowsApplication1
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(588, 547);
+            this.Controls.Add(this.FullScreenButton);
             this.Controls.Add(this.LogoBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.FileTabs);
@@ -343,6 +357,7 @@ namespace WindowsApplication1
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.PictureBox PreviewBox;
         public System.Windows.Forms.TextBox SizeTextBox;
+        private System.Windows.Forms.Button FullScreenButton;
     }
 }
 
