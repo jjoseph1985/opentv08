@@ -276,6 +276,7 @@ namespace WindowsApplication1
             // 
             // PreviewBox
             // 
+            this.PreviewBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PreviewBox.InitialImage")));
             this.PreviewBox.Location = new System.Drawing.Point(6, 19);
             this.PreviewBox.Name = "PreviewBox";
             this.PreviewBox.Size = new System.Drawing.Size(177, 121);
@@ -338,13 +339,11 @@ namespace WindowsApplication1
         private System.Windows.Forms.ListBox AudioListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TabControl FileTabs;
         private System.Windows.Forms.TabPage AudioPage;
         private System.Windows.Forms.TabPage VideoPage;
         private System.Windows.Forms.TabPage PicturePage;
         private System.Windows.Forms.ListBox VideoListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.ListBox PictureListBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox PathTextBox;
@@ -358,6 +357,8 @@ namespace WindowsApplication1
         private System.Windows.Forms.PictureBox PreviewBox;
         public System.Windows.Forms.TextBox SizeTextBox;
         private System.Windows.Forms.Button FullScreenButton;
+        public System.Windows.Forms.ListBox PictureListBox;
+        public System.Windows.Forms.TabControl FileTabs;
     }
 }
 

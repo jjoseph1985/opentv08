@@ -84,9 +84,8 @@ namespace WindowsApplication1
         
         private void AudioListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            PopulateFields((FileData)this.AudioListBox.SelectedItem);
-
+            if (AudioListBox.SelectedIndex != -1)
+                PopulateFields((FileData)this.AudioListBox.SelectedItem);               
         }
 
         private void AudioListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -110,7 +109,8 @@ namespace WindowsApplication1
 
         private void VideoListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PopulateFields((FileData)this.VideoListBox.SelectedItem);
+            if (VideoListBox.SelectedIndex != -1)
+                PopulateFields((FileData)this.VideoListBox.SelectedItem);
         }
 
         private void VideoListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -276,7 +276,7 @@ namespace WindowsApplication1
             }
         }
 
-        private void FullScreenButton_Click(object sender, EventArgs e)
+        public void FullScreenButton_Click(object sender, EventArgs e)
         {
             PicturePreviewForm imagePreview = new PicturePreviewForm();
             FileData FD = new FileData();
