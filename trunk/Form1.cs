@@ -30,7 +30,7 @@ namespace WindowsApplication1
             this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragDrop);
             this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
             this.PictureListBox.KeyDown += new KeyEventHandler(PictureListBox_KeyDown);
-
+            
             this.Menu = mainMenu;
             MenuItem miFile = mainMenu.MenuItems.Add("&File");
             miFile.MenuItems.Add(new MenuItem("&Add File(s)", new EventHandler(this.FileOpen_Clicked), Shortcut.CtrlF));
@@ -256,6 +256,19 @@ namespace WindowsApplication1
                 {
                     MessageBox.Show("Invalid File. Please select a media file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }         
+        }
+
+        private void FullScreenButton_Click(object sender, EventArgs e)
+        {
+            PicturePreviewForm imagePreview = new PicturePreviewForm();
+            FileData FD = new FileData();
+            if (FileTabs.SelectedTab == PicturePage)
+            {
+                FD = (FileData)this.PictureListBox.SelectedItem;               
+                imagePreview.Show();
+                imagePreview.FullScreenPictureBox.ImageLocation = FD.GetFilePath();
+            }
+            
         }
     }
 }
