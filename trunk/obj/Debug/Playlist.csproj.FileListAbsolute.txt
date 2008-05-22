@@ -56,3 +56,16 @@ C:\Projects\OpenTV\trunk\obj\Debug\Playlist.csproj.GenerateResource.Cache
 C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.exe.manifest
 C:\Projects\OpenTV\trunk\obj\Debug\OpenTV.application
 C:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.PicturePreviewForm.resources
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\OpenTV.exe
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\OpenTV.pdb
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\OpenTV.exe.manifest
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\OpenTV.application
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\OpenTV.exe
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\OpenTV.pdb
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\WindowsApplication1.Form1.resources
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\WindowsApplication1.PicturePreviewForm.resources
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\Playlist.csproj.GenerateResource.Cache
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\OpenTV.exe.manifest
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\OpenTV.application

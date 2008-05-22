@@ -35,8 +35,6 @@ namespace WindowsApplication1
                 fileType = "Video";
             else if ((FI.Extension == ".bmp") || (FI.Extension == ".jpg") || (FI.Extension == ".gif") || (FI.Extension == ".png") || (FI.Extension == ".tif") || (FI.Extension == ".jpeg") || (FI.Extension == ".JPG"))
                 fileType = "Image";
-            else if ((FI.Extension == ".db"))
-                fileType = "db";
             else
                 fileType = "Invalid";
         }
