@@ -12,16 +12,17 @@ namespace WindowsApplication1
 {
     public partial class PicturePreviewForm : Form
     {
-        public PicturePreviewForm()
+        ListBox lb = new ListBox(); 
+
+        public PicturePreviewForm(ListBox tempLB)
         {
             InitializeComponent();
-
+            lb = tempLB;
             this.KeyDown += new KeyEventHandler(PicturePreviewForm_KeyDown);
         }
 
         void PicturePreviewForm_KeyDown(object sender, KeyEventArgs e)
         {
-            Form1 form = new Form1();
             FileData FD = new FileData();
             if (e.KeyValue == 27)
             {
@@ -29,25 +30,33 @@ namespace WindowsApplication1
             }
             else if (e.KeyCode == Keys.Left)
             {
-                int currIndex = form.PictureListBox.SelectedIndex;
-                MessageBox.Show("left arrow clicked");
-                currIndex = currIndex - 1; ;
-                MessageBox.Show("left arrow clicked" + currIndex);
-                //form.PictureListBox.SetSelected(1, true);
-                //FD = (FileData)form.PictureListBox.SelectedItem;
-                MessageBox.Show("left arrow clicked");
-                //FullScreenPictureBox.ImageLocation = FD.GetFilePath();
+                int currIndex = lb.SelectedIndex;
+                lb.SetSelected(currIndex, false);
+                if (currIndex == 0)
+                    currIndex = lb.Items.Count - 1;
+                else
+                    currIndex = currIndex - 1; 
+                lb.SetSelected(currIndex, true);
+                FD = (FileData)lb.SelectedItem;
+                FullScreenPictureBox.ImageLocation = FD.GetFilePath();
             }
             else if (e.KeyCode == Keys.Right)
             {
-                //form.PictureListBox.SelectedIndex += 1;
-                //FD = (FileData)form.PictureListBox.SelectedItem;
-                // FullScreenPictureBox.ImageLocation = FD.GetFilePath();
+                int currIndex = lb.SelectedIndex;
+                lb.SetSelected(currIndex, false);
+                if (currIndex == lb.Items.Count - 1)
+                    currIndex = 0;
+                else
+                    currIndex = currIndex + 1;
+                lb.SetSelected(currIndex, true);
+                FD = (FileData)lb.SelectedItem;
+                FullScreenPictureBox.ImageLocation = FD.GetFilePath();
             }
             else
                 e.Handled = true;
 
         }
+
 
     }
 }

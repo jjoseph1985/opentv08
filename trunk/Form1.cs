@@ -278,7 +278,7 @@ namespace WindowsApplication1
 
         public void FullScreenButton_Click(object sender, EventArgs e)
         {
-            PicturePreviewForm imagePreview = new PicturePreviewForm();
+            PicturePreviewForm imagePreview = new PicturePreviewForm(this.PictureListBox);
             FileData FD = new FileData();
             if (FileTabs.SelectedTab == PicturePage)
             {
