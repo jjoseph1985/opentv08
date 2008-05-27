@@ -54,6 +54,8 @@ namespace WindowsApplication1
             this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.FullScreenButton = new System.Windows.Forms.Button();
+            this.pauseButton = new System.Windows.Forms.Button();
+            this.playButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -291,12 +293,32 @@ namespace WindowsApplication1
             // 
             this.FullScreenButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FullScreenButton.BackgroundImage")));
             this.FullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FullScreenButton.Location = new System.Drawing.Point(379, 150);
+            this.FullScreenButton.Location = new System.Drawing.Point(377, 151);
             this.FullScreenButton.Name = "FullScreenButton";
             this.FullScreenButton.Size = new System.Drawing.Size(36, 28);
             this.FullScreenButton.TabIndex = 16;
             this.FullScreenButton.UseVisualStyleBackColor = true;
             this.FullScreenButton.Click += new System.EventHandler(this.FullScreenButton_Click);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pauseButton.BackgroundImage")));
+            this.pauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pauseButton.Location = new System.Drawing.Point(280, 151);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(36, 28);
+            this.pauseButton.TabIndex = 17;
+            this.pauseButton.UseVisualStyleBackColor = true;
+            // 
+            // playButton
+            // 
+            this.playButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("playButton.BackgroundImage")));
+            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.playButton.Location = new System.Drawing.Point(241, 151);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(36, 28);
+            this.playButton.TabIndex = 18;
+            this.playButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -308,6 +330,8 @@ namespace WindowsApplication1
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(436, 481);
+            this.Controls.Add(this.playButton);
+            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.FullScreenButton);
             this.Controls.Add(this.LogoBox);
             this.Controls.Add(this.groupBox2);
@@ -358,6 +382,8 @@ namespace WindowsApplication1
         private System.Windows.Forms.Button FullScreenButton;
         public System.Windows.Forms.ListBox PictureListBox;
         public System.Windows.Forms.TabControl FileTabs;
+        private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.Button playButton;
     }
 }
 
