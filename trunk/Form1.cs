@@ -238,31 +238,51 @@ namespace WindowsApplication1
 
                 if (FD.GetFileType() == "Audio")
                 {
-                    if (AudioListBox.Items.Contains(FD.Path) == false)
+                    for (int i = 0; i < AudioListBox.Items.Count; i++)
                     {
-                        AudioListBox.Items.Add(FD);
-                        FileTabs.SelectTab(AudioPage);
+                        if (FD == (FileData)AudioListBox.Items[i])
+                        {
+                            AudioListBox.Items.RemoveAt(i);
+                            i--;
+                        }
                     }
+                    AudioListBox.Items.Add(FD);
+                    FileTabs.SelectTab(AudioPage);
+
                     check = true;
                     CreateXML("Audio");
                 }
                 else if (FD.GetFileType() == "Video")
                 {
-                    if (VideoListBox.Items.Contains(FD.Path) == false)
+                    for (int i = 0; i < VideoListBox.Items.Count; i++)
                     {
-                        VideoListBox.Items.Add(FD);
-                        FileTabs.SelectTab(VideoPage);
+                        if (FD == (FileData)VideoListBox.Items[i])
+                        {
+                            VideoListBox.Items.RemoveAt(i);
+                            i--;
+                        }
                     }
+
+                    VideoListBox.Items.Add(FD);
+                    FileTabs.SelectTab(VideoPage);
+
                     check = true;
                     CreateXML("Video");
                 }
                 else if (FD.GetFileType() == "Image")
                 {
-                    if (PictureListBox.Items.Contains(FD.Path) == false)
+                    for(int i = 0; i<PictureListBox.Items.Count;i++)
                     {
-                        PictureListBox.Items.Add(FD);
-                        FileTabs.SelectTab(PicturePage);
+                        if (FD == (FileData)PictureListBox.Items[i])
+                        {
+                            PictureListBox.Items.RemoveAt(i);
+                            i--;
+                        }
                     }
+
+                    PictureListBox.Items.Add(FD);
+                    FileTabs.SelectTab(PicturePage);
+                    
                     check = true;
                     CreateXML("Image");
                 }
