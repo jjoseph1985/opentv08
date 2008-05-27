@@ -69,3 +69,8 @@ C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\WindowsApplicati
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\Playlist.csproj.GenerateResource.Cache
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\OpenTV.exe.manifest
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\OpenTV.application
+C:\Projects\OpenTV\trunk\bin\Release\axinterop.wmplib.dll
+C:\Projects\OpenTV\trunk\bin\Release\Interop.WMPLib.dll
+C:\Projects\OpenTV\trunk\obj\Debug\Interop.WMPLib.dll
+C:\Projects\OpenTV\trunk\obj\Debug\Playlist.csproj.ResolveComReference.cache
+C:\Projects\OpenTV\trunk\obj\Debug\AxInterop.WMPLib.dll

@@ -11,6 +11,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Collections;
+using WMPLib;
 
 namespace WindowsApplication1
 {
@@ -45,7 +46,6 @@ namespace WindowsApplication1
             miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
         }
-
 
         /// <summary>
         /// Key Down Events
@@ -84,6 +84,7 @@ namespace WindowsApplication1
         
         private void AudioListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PicturePreviewBox.Visible = false;
             if (AudioListBox.SelectedIndex != -1)
                 PopulateFields((FileData)this.AudioListBox.SelectedItem);               
         }
@@ -109,6 +110,7 @@ namespace WindowsApplication1
 
         private void VideoListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PicturePreviewBox.Visible = false;
             if (VideoListBox.SelectedIndex != -1)
                 PopulateFields((FileData)this.VideoListBox.SelectedItem);
         }
@@ -131,6 +133,8 @@ namespace WindowsApplication1
 
         private void PictureListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            player.Visible = false;
+            PicturePreviewBox.Visible = true;
             if(PictureListBox.SelectedIndex != -1)
                 PopulateFields((FileData)this.PictureListBox.SelectedItem);
         }
@@ -202,13 +206,13 @@ namespace WindowsApplication1
         private void PopulateFields(FileData data)
         {
             //sets the picture box thumbnail size
-            PreviewBox.SizeMode = PictureBoxSizeMode.Zoom;
+            PicturePreviewBox.SizeMode = PictureBoxSizeMode.Zoom;
 
             //displays file size
             this.SizeTextBox.Text = data.GetFileSize();
 
             ////displays the thumbnail image
-            PreviewBox.ImageLocation = data.GetFilePath();
+            PicturePreviewBox.ImageLocation = data.GetFilePath();
 
             //displays the file path to the file info box
             this.PathTextBox.Text = data.GetFilePath();
@@ -224,7 +228,7 @@ namespace WindowsApplication1
 
             this.PathTextBox.Clear();
 
-            this.PreviewBox.ImageLocation = "";
+            this.PicturePreviewBox.ImageLocation = "";
 
             this.TypeTextBox.Clear();
         }
@@ -306,6 +310,23 @@ namespace WindowsApplication1
                 imagePreview.Show();
                 imagePreview.FullScreenPictureBox.ImageLocation = FD.GetFilePath();
             }
+            else if(FileTabs.SelectedTab == AudioPage)
+            {
+                if (player.playState == WMPPlayState.wmppsPlaying)
+                    player.fullScreen = true;
+                else
+                    MessageBox.Show("Please Start Audio File First.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (FileTabs.SelectedTab == VideoPage)
+            {               
+                if (player.playState == WMPPlayState.wmppsPlaying)
+                {
+                    player.uiMode = "full";
+                    player.fullScreen = true;                   
+                }
+                else
+                    MessageBox.Show("Please Start Video File First.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             
         }
 
@@ -376,6 +397,37 @@ namespace WindowsApplication1
                     this.AudioListBox.Items.Add(o);
                 }
             }
+        }
+
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+            FileData FD = new FileData();
+            try
+            {
+                if (FileTabs.SelectedTab == AudioPage)
+                {
+                    player.Visible = true;
+                    FD = (FileData)AudioListBox.SelectedItem;
+                    player.URL = FD.GetFilePath();
+                    player.Ctlcontrols.play();
+                }
+                else if (FileTabs.SelectedTab == VideoPage)
+                {
+                    player.Visible = true;
+                    FD = (FileData)VideoListBox.SelectedItem;
+                    player.URL = FD.GetFilePath();
+                    player.Ctlcontrols.play();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No File Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            player.Ctlcontrols.stop();
         }
     }
 }
