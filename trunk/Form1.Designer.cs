@@ -51,11 +51,15 @@ namespace WindowsApplication1
             this.LogoBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.PreviewBox = new System.Windows.Forms.PictureBox();
+            this.player = new AxWMPLib.AxWindowsMediaPlayer();
+            this.PicturePreviewBox = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.PauseButton = new System.Windows.Forms.Button();
+            this.PlayButton = new System.Windows.Forms.Button();
+            this.RewindButton = new System.Windows.Forms.Button();
+            this.FastForwardButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
-            this.pauseButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -63,7 +67,8 @@ namespace WindowsApplication1
             this.PicturePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicturePreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
             // TransferProgBar
@@ -268,7 +273,8 @@ namespace WindowsApplication1
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.PreviewBox);
+            this.groupBox2.Controls.Add(this.player);
+            this.groupBox2.Controls.Add(this.PicturePreviewBox);
             this.groupBox2.Location = new System.Drawing.Point(232, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(189, 146);
@@ -276,49 +282,91 @@ namespace WindowsApplication1
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preview";
             // 
-            // PreviewBox
+            // player
             // 
-            this.PreviewBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PreviewBox.InitialImage")));
-            this.PreviewBox.Location = new System.Drawing.Point(6, 19);
-            this.PreviewBox.Name = "PreviewBox";
-            this.PreviewBox.Size = new System.Drawing.Size(177, 121);
-            this.PreviewBox.TabIndex = 0;
-            this.PreviewBox.TabStop = false;
+            this.player.Enabled = true;
+            this.player.Location = new System.Drawing.Point(6, 19);
+            this.player.Name = "player";
+            this.player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
+            this.player.Size = new System.Drawing.Size(177, 121);
+            this.player.TabIndex = 1;
+            this.player.Visible = false;
+            // 
+            // PicturePreviewBox
+            // 
+            this.PicturePreviewBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicturePreviewBox.InitialImage")));
+            this.PicturePreviewBox.Location = new System.Drawing.Point(6, 19);
+            this.PicturePreviewBox.Name = "PicturePreviewBox";
+            this.PicturePreviewBox.Size = new System.Drawing.Size(177, 121);
+            this.PicturePreviewBox.TabIndex = 0;
+            this.PicturePreviewBox.TabStop = false;
             // 
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.ShowNewFolderButton = false;
             // 
+            // PauseButton
+            // 
+            this.PauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PauseButton.BackgroundImage")));
+            this.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PauseButton.Location = new System.Drawing.Point(258, 151);
+            this.PauseButton.Name = "PauseButton";
+            this.PauseButton.Size = new System.Drawing.Size(36, 28);
+            this.PauseButton.TabIndex = 17;
+            this.PauseButton.UseVisualStyleBackColor = true;
+            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
+            // 
+            // PlayButton
+            // 
+            this.PlayButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayButton.BackgroundImage")));
+            this.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PlayButton.Location = new System.Drawing.Point(216, 151);
+            this.PlayButton.Name = "PlayButton";
+            this.PlayButton.Size = new System.Drawing.Size(36, 28);
+            this.PlayButton.TabIndex = 18;
+            this.PlayButton.UseVisualStyleBackColor = true;
+            this.PlayButton.Click += new System.EventHandler(this.PlayButton_Click);
+            // 
+            // RewindButton
+            // 
+            this.RewindButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RewindButton.BackgroundImage")));
+            this.RewindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RewindButton.Location = new System.Drawing.Point(297, 151);
+            this.RewindButton.Name = "RewindButton";
+            this.RewindButton.Size = new System.Drawing.Size(36, 28);
+            this.RewindButton.TabIndex = 19;
+            this.RewindButton.UseVisualStyleBackColor = true;
+            // 
+            // FastForwardButton
+            // 
+            this.FastForwardButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FastForwardButton.BackgroundImage")));
+            this.FastForwardButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FastForwardButton.Location = new System.Drawing.Point(335, 151);
+            this.FastForwardButton.Name = "FastForwardButton";
+            this.FastForwardButton.Size = new System.Drawing.Size(36, 28);
+            this.FastForwardButton.TabIndex = 20;
+            this.FastForwardButton.UseVisualStyleBackColor = true;
+            // 
             // FullScreenButton
             // 
             this.FullScreenButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FullScreenButton.BackgroundImage")));
             this.FullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FullScreenButton.Location = new System.Drawing.Point(377, 151);
+            this.FullScreenButton.Location = new System.Drawing.Point(372, 151);
             this.FullScreenButton.Name = "FullScreenButton";
             this.FullScreenButton.Size = new System.Drawing.Size(36, 28);
             this.FullScreenButton.TabIndex = 16;
             this.FullScreenButton.UseVisualStyleBackColor = true;
             this.FullScreenButton.Click += new System.EventHandler(this.FullScreenButton_Click);
             // 
-            // pauseButton
+            // button2
             // 
-            this.pauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pauseButton.BackgroundImage")));
-            this.pauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pauseButton.Location = new System.Drawing.Point(280, 151);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(36, 28);
-            this.pauseButton.TabIndex = 17;
-            this.pauseButton.UseVisualStyleBackColor = true;
-            // 
-            // playButton
-            // 
-            this.playButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("playButton.BackgroundImage")));
-            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.playButton.Location = new System.Drawing.Point(241, 151);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(36, 28);
-            this.playButton.TabIndex = 18;
-            this.playButton.UseVisualStyleBackColor = true;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(335, 151);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(36, 28);
+            this.button2.TabIndex = 20;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -330,9 +378,12 @@ namespace WindowsApplication1
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(436, 481);
-            this.Controls.Add(this.playButton);
-            this.Controls.Add(this.pauseButton);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.FastForwardButton);
+            this.Controls.Add(this.RewindButton);
+            this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.FullScreenButton);
+            this.Controls.Add(this.PauseButton);
             this.Controls.Add(this.LogoBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.FileTabs);
@@ -350,7 +401,8 @@ namespace WindowsApplication1
             this.PicturePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicturePreviewBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,13 +429,17 @@ namespace WindowsApplication1
         private System.Windows.Forms.OpenFileDialog openFileDialog4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.PictureBox PreviewBox;
+        private System.Windows.Forms.PictureBox PicturePreviewBox;
         public System.Windows.Forms.TextBox SizeTextBox;
-        private System.Windows.Forms.Button FullScreenButton;
         public System.Windows.Forms.ListBox PictureListBox;
         public System.Windows.Forms.TabControl FileTabs;
-        private System.Windows.Forms.Button pauseButton;
-        private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.Button PauseButton;
+        private System.Windows.Forms.Button PlayButton;
+        private System.Windows.Forms.Button RewindButton;
+        private System.Windows.Forms.Button FastForwardButton;
+        private System.Windows.Forms.Button FullScreenButton;
+        private System.Windows.Forms.Button button2;
+        public AxWMPLib.AxWindowsMediaPlayer player;
     }
 }
 
