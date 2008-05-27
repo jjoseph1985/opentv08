@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenTV.exe" size="68096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenTV.exe" size="68608">
       <assemblyIdentity name="OpenTV" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Cbt+9ux+n3apC0rUfiQS0s/lyFw=</dsig:DigestValue>
+        <dsig:DigestValue>knuf1SWXS+9ELWymOyGksVrdEl4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
