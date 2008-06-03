@@ -35,7 +35,8 @@ namespace WindowsApplication1
             this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragDrop);
             this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
             this.PictureListBox.KeyDown += new KeyEventHandler(PictureListBox_KeyDown);
-
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
+ 
             ReadXML();
 
             this.Menu = mainMenu;
@@ -47,11 +48,21 @@ namespace WindowsApplication1
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
         }
 
+        void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.player.fullScreen = false;
+            this.player.uiMode = "None";
+        }
+
+
+
         /// <summary>
         /// Key Down Events
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
+
         void VideoListBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 46)
@@ -318,18 +329,17 @@ namespace WindowsApplication1
                     MessageBox.Show("Please Start Audio File First.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (FileTabs.SelectedTab == VideoPage)
-            {               
+            {
                 if (player.playState == WMPPlayState.wmppsPlaying)
                 {
                     player.uiMode = "full";
-                    player.fullScreen = true;                   
+                    player.fullScreen = true;
                 }
                 else
                     MessageBox.Show("Please Start Video File First.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }
-
         private void CreateXML(string type)
         {
             ListBox myBox = new ListBox();
@@ -402,32 +412,53 @@ namespace WindowsApplication1
         private void PlayButton_Click(object sender, EventArgs e)
         {
             FileData FD = new FileData();
-            try
+            if (player.playState == WMPPlayState.wmppsPaused)
             {
-                if (FileTabs.SelectedTab == AudioPage)
-                {
-                    player.Visible = true;
-                    FD = (FileData)AudioListBox.SelectedItem;
-                    player.URL = FD.GetFilePath();
-                    player.Ctlcontrols.play();
-                }
-                else if (FileTabs.SelectedTab == VideoPage)
-                {
-                    player.Visible = true;
-                    FD = (FileData)VideoListBox.SelectedItem;
-                    player.URL = FD.GetFilePath();
-                    player.Ctlcontrols.play();
-                }
+                player.Ctlcontrols.play();
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("No File Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                try
+                {
+                    if (FileTabs.SelectedTab == AudioPage)
+                    {
+                        player.Visible = true;
+                        FD = (FileData)AudioListBox.SelectedItem;
+                        player.URL = FD.GetFilePath();
+                        player.Ctlcontrols.play();
+                    }
+                    else if (FileTabs.SelectedTab == VideoPage)
+                    {
+                        player.Visible = true;
+                        FD = (FileData)VideoListBox.SelectedItem;
+                        player.URL = FD.GetFilePath();
+                        player.Ctlcontrols.play();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("No File Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
         private void PauseButton_Click(object sender, EventArgs e)
         {
-            player.Ctlcontrols.stop();
+            if (player.playState == WMPPlayState.wmppsPaused)
+                player.Ctlcontrols.play();
+            else
+                player.Ctlcontrols.pause();
         }
+
+        private void FastForwardButton_Click(object sender, EventArgs e)
+        {
+            player.Ctlcontrols.currentPosition += 10;
+        }
+
+        private void RewindButton_Click(object sender, EventArgs e)
+        {
+            player.Ctlcontrols.currentPosition -= 10;
+        }
+
     }
 }

@@ -57,9 +57,8 @@ namespace WindowsApplication1
             this.PauseButton = new System.Windows.Forms.Button();
             this.PlayButton = new System.Windows.Forms.Button();
             this.RewindButton = new System.Windows.Forms.Button();
-            this.FastForwardButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.FastForwardButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -309,9 +308,9 @@ namespace WindowsApplication1
             // 
             this.PauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PauseButton.BackgroundImage")));
             this.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PauseButton.Location = new System.Drawing.Point(258, 151);
+            this.PauseButton.Location = new System.Drawing.Point(271, 151);
             this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(36, 28);
+            this.PauseButton.Size = new System.Drawing.Size(37, 28);
             this.PauseButton.TabIndex = 17;
             this.PauseButton.UseVisualStyleBackColor = true;
             this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
@@ -320,7 +319,7 @@ namespace WindowsApplication1
             // 
             this.PlayButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayButton.BackgroundImage")));
             this.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PlayButton.Location = new System.Drawing.Point(216, 151);
+            this.PlayButton.Location = new System.Drawing.Point(234, 151);
             this.PlayButton.Name = "PlayButton";
             this.PlayButton.Size = new System.Drawing.Size(36, 28);
             this.PlayButton.TabIndex = 18;
@@ -331,42 +330,35 @@ namespace WindowsApplication1
             // 
             this.RewindButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RewindButton.BackgroundImage")));
             this.RewindButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.RewindButton.Location = new System.Drawing.Point(297, 151);
+            this.RewindButton.Location = new System.Drawing.Point(309, 151);
             this.RewindButton.Name = "RewindButton";
-            this.RewindButton.Size = new System.Drawing.Size(36, 28);
+            this.RewindButton.Size = new System.Drawing.Size(37, 28);
             this.RewindButton.TabIndex = 19;
             this.RewindButton.UseVisualStyleBackColor = true;
-            // 
-            // FastForwardButton
-            // 
-            this.FastForwardButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FastForwardButton.BackgroundImage")));
-            this.FastForwardButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FastForwardButton.Location = new System.Drawing.Point(335, 151);
-            this.FastForwardButton.Name = "FastForwardButton";
-            this.FastForwardButton.Size = new System.Drawing.Size(36, 28);
-            this.FastForwardButton.TabIndex = 20;
-            this.FastForwardButton.UseVisualStyleBackColor = true;
+            this.RewindButton.Click += new System.EventHandler(this.RewindButton_Click);
             // 
             // FullScreenButton
             // 
             this.FullScreenButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FullScreenButton.BackgroundImage")));
             this.FullScreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FullScreenButton.Location = new System.Drawing.Point(372, 151);
+            this.FullScreenButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.FullScreenButton.Location = new System.Drawing.Point(384, 151);
             this.FullScreenButton.Name = "FullScreenButton";
             this.FullScreenButton.Size = new System.Drawing.Size(36, 28);
             this.FullScreenButton.TabIndex = 16;
             this.FullScreenButton.UseVisualStyleBackColor = true;
             this.FullScreenButton.Click += new System.EventHandler(this.FullScreenButton_Click);
             // 
-            // button2
+            // FastForwardButton
             // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(335, 151);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(36, 28);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
+            this.FastForwardButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FastForwardButton.BackgroundImage")));
+            this.FastForwardButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FastForwardButton.Location = new System.Drawing.Point(347, 151);
+            this.FastForwardButton.Name = "FastForwardButton";
+            this.FastForwardButton.Size = new System.Drawing.Size(36, 28);
+            this.FastForwardButton.TabIndex = 20;
+            this.FastForwardButton.UseVisualStyleBackColor = true;
+            this.FastForwardButton.Click += new System.EventHandler(this.FastForwardButton_Click);
             // 
             // Form1
             // 
@@ -378,7 +370,6 @@ namespace WindowsApplication1
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(436, 481);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.FastForwardButton);
             this.Controls.Add(this.RewindButton);
             this.Controls.Add(this.PlayButton);
@@ -390,6 +381,7 @@ namespace WindowsApplication1
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TransferButton);
             this.Controls.Add(this.TransferProgBar);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "OpenTV File Manager";
@@ -436,9 +428,8 @@ namespace WindowsApplication1
         private System.Windows.Forms.Button PauseButton;
         private System.Windows.Forms.Button PlayButton;
         private System.Windows.Forms.Button RewindButton;
-        private System.Windows.Forms.Button FastForwardButton;
         private System.Windows.Forms.Button FullScreenButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button FastForwardButton;
         public AxWMPLib.AxWindowsMediaPlayer player;
     }
 }
