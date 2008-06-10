@@ -20,6 +20,7 @@ namespace WindowsApplication1
         bool check;
         MainMenu mainMenu = new MainMenu();
         ContextMenu label4ContextMenu = new ContextMenu();
+        public bool movieFlag = false;
 
         public Form1()
         {
@@ -145,6 +146,13 @@ namespace WindowsApplication1
         private void PictureListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             player.Visible = false;
+            if (player.playState == WMPPlayState.wmppsPlaying)
+            {
+                if (movieFlag == true) 
+                {
+                    player.Ctlcontrols.stop();
+                }
+            }
             PicturePreviewBox.Visible = true;
             if(PictureListBox.SelectedIndex != -1)
                 PopulateFields((FileData)this.PictureListBox.SelectedItem);
@@ -429,6 +437,7 @@ namespace WindowsApplication1
                     }
                     else if (FileTabs.SelectedTab == VideoPage)
                     {
+                        movieFlag = true;
                         player.Visible = true;
                         FD = (FileData)VideoListBox.SelectedItem;
                         player.URL = FD.GetFilePath();
