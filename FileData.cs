@@ -66,7 +66,7 @@ namespace WindowsApplication1
 
         public static bool operator ==(FileData file1, FileData file2)
         {
-            return file1.GetFilePath()==file2.GetFilePath();
+            return file1.GetFilePath() == file2.GetFilePath();
         }
 
         public static bool operator !=(FileData file1, FileData file2)
