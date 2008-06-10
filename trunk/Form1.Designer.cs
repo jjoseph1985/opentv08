@@ -85,6 +85,7 @@ namespace WindowsApplication1
             this.TransferButton.TabIndex = 1;
             this.TransferButton.Text = "Transfer";
             this.TransferButton.UseVisualStyleBackColor = true;
+            this.TransferButton.Click += new System.EventHandler(this.TransferButton_Click);
             // 
             // AudioListBox
             // 
