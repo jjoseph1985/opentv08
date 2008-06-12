@@ -22,11 +22,13 @@ namespace WindowsApplication1
         MainMenu mainMenu = new MainMenu();
         ContextMenu label4ContextMenu = new ContextMenu();
         public bool movieFlag = false;
+        public string chosenIP;
+        public string chosenPort;
 
         public Form1()
         {
             InitializeComponent();
-
+  
             //gives event handler notification of control forms
             this.AudioListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.AudioListBox_DragDrop);
             this.AudioListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.AudioListBox_DragEnter);
@@ -478,18 +480,25 @@ namespace WindowsApplication1
         {
             try
             {
-                Socket s1 = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
-                String szIPSelected = "192.168.0.100";
-                String szPort = "8221";
-                int alPort = System.Convert.ToInt16(szPort, 10);
-                System.Net.IPAddress remoteIPAddress = System.Net.IPAddress.Parse(szIPSelected);
-                System.Net.IPEndPoint remoteEndPoint = new System.Net.IPEndPoint(remoteIPAddress, alPort);
-                s1.Connect(remoteEndPoint);
-                String szData = "Connected";
-                byte[] byData = System.Text.Encoding.ASCII.GetBytes(szData);
-                s1.Send(byData);
-                s1.SendFile("C:\\Documents and Settings\\Jeremy\\Desktop\\test video\\New Text Document.txt");
-                s1.Close();
+                IPConfigForm ip = new IPConfigForm(this);
+                ip.ShowDialog();
+                if (chosenIP != "" && chosenPort != "" && chosenPort != null && chosenIP != null)
+                {
+                    Socket s1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    String szIPSelected = chosenIP;
+                    String szPort = chosenPort;
+                    int alPort = System.Convert.ToInt16(szPort, 10);
+                    System.Net.IPAddress remoteIPAddress = System.Net.IPAddress.Parse(szIPSelected);
+                    System.Net.IPEndPoint remoteEndPoint = new System.Net.IPEndPoint(remoteIPAddress, alPort);
+                    s1.Connect(remoteEndPoint);
+                    String szData = "Connected";
+                    byte[] byData = System.Text.Encoding.ASCII.GetBytes(szData);
+                    s1.Send(byData);
+                    s1.SendFile("C:\\Documents and Settings\\Jeremy\\Desktop\\test video\\New Text Document.txt");
+                    s1.Close();
+                }
+                else
+                    MessageBox.Show("No Data Entered for IP Address and/or Port Number. Please Try Again.", "Error. Missing Info.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception es)
             {
