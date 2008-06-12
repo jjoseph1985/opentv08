@@ -49,6 +49,8 @@ namespace WindowsApplication1
             miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Add Folder", new EventHandler(this.FolderOpen_Clicked), Shortcut.CtrlO));
             miFile.MenuItems.Add("-");
+            miFile.MenuItems.Add(new MenuItem("&Connection Settings", new EventHandler(this.ConnSet_Clicked), Shortcut.CtrlC));
+            miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
         }
 
@@ -197,6 +199,12 @@ namespace WindowsApplication1
                 }
             }   
        }
+
+        private void ConnSet_Clicked(object sender, System.EventArgs e)
+        {
+            IPConfigForm ip = new IPConfigForm(this);
+            ip.ShowDialog();
+        }
 
         private void FolderOpen_Clicked(object sender, System.EventArgs e)
         {
@@ -480,8 +488,6 @@ namespace WindowsApplication1
         {
             try
             {
-                IPConfigForm ip = new IPConfigForm(this);
-                ip.ShowDialog();
                 if (chosenIP != "" && chosenPort != "" && chosenPort != null && chosenIP != null)
                 {
                     Socket s1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -494,11 +500,10 @@ namespace WindowsApplication1
                     String szData = "Connected";
                     byte[] byData = System.Text.Encoding.ASCII.GetBytes(szData);
                     s1.Send(byData);
-                    s1.SendFile("C:\\Documents and Settings\\Jeremy\\Desktop\\test video\\New Text Document.txt");
                     s1.Close();
                 }
                 else
-                    MessageBox.Show("No Data Entered for IP Address and/or Port Number. Please Try Again.", "Error. Missing Info.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No Data Entered for IP Address and/or Port Number. Please Check The Settings From The File Menu.", "Error. Missing Info.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception es)
             {
