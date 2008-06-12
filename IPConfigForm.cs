@@ -10,18 +10,19 @@ namespace WindowsApplication1
 {
     public partial class IPConfigForm : Form
     {
-        Form1 y = new Form1();
+        Form1 z;
         public IPConfigForm(Form1 y)
         {
             InitializeComponent();
-
-            this.y = y;
+            z = y;
+            ipTextBox.Text = z.chosenIP;
+            portTextBox.Text = z.chosenPort;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            y.chosenIP = ipTextBox.Text;
-            y.chosenPort = portTextBox.Text;
+            z.chosenIP = ipTextBox.Text;
+            z.chosenPort = portTextBox.Text;
             this.Close();
         }
 

@@ -12,6 +12,7 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Collections;
 using System.Net.Sockets;
+using System.Threading;
 using WMPLib;
 
 namespace WindowsApplication1
@@ -22,8 +23,8 @@ namespace WindowsApplication1
         MainMenu mainMenu = new MainMenu();
         ContextMenu label4ContextMenu = new ContextMenu();
         public bool movieFlag = false;
-        public string chosenIP;
-        public string chosenPort;
+        public string chosenIP = "10.34.33.214";
+        public string chosenPort = "8221";
 
         public Form1()
         {
@@ -497,9 +498,62 @@ namespace WindowsApplication1
                     System.Net.IPAddress remoteIPAddress = System.Net.IPAddress.Parse(szIPSelected);
                     System.Net.IPEndPoint remoteEndPoint = new System.Net.IPEndPoint(remoteIPAddress, alPort);
                     s1.Connect(remoteEndPoint);
-                    String szData = "Connected";
-                    byte[] byData = System.Text.Encoding.ASCII.GetBytes(szData);
-                    s1.Send(byData);
+
+                    FileData FD = new FileData();
+                    if (FileTabs.SelectedTab == AudioPage)
+                        FD = (FileData)AudioListBox.SelectedItem;
+                    else if (FileTabs.SelectedTab == VideoPage)
+                        FD = (FileData)VideoListBox.SelectedItem;
+                    else if (FileTabs.SelectedTab == PicturePage)
+                        FD = (FileData)PictureListBox.SelectedItem;
+
+                    string fileName = FD.GetFileName() + "." + FD.GetFileExtension();
+                    string filePath = FD.GetFileDirPath() + "\\";
+                    byte[] fileNameByte = Encoding.ASCII.GetBytes(fileName);
+
+                    byte[] fileData = File.ReadAllBytes(filePath + fileName);
+                    byte[] clientData = new byte[4 + fileNameByte.Length + fileData.Length];
+                    byte[] fileNameLen = BitConverter.GetBytes(fileNameByte.Length);
+
+                    fileNameLen.CopyTo(clientData, 0);
+                    fileNameByte.CopyTo(clientData, 4);
+                    fileData.CopyTo(clientData, 4 + fileNameByte.Length);
+
+                    byte[] clientDataLen = BitConverter.GetBytes(clientData.Length);
+
+                    long bytesToSend = clientData.Length;
+                    long bytesSent = 0;
+                    byte[] buffer = new byte[1024];
+                   
+                    TransferProgBar.Minimum = 0;
+                    TransferProgBar.Maximum = 100;
+                    TransferProgBar.Value = 0;
+
+                    //Send size packet
+                    s1.Send(clientDataLen, clientDataLen.Length, SocketFlags.None);
+                    
+                    //Loop through packets
+                    while(bytesSent < bytesToSend)
+                    {
+                        int i;
+                        for (i = 0; i < buffer.Length; i++)
+                        {
+                            if (bytesSent + i < clientData.Length)
+                                buffer[i] = clientData[bytesSent + i];
+                            else
+                                break;
+                        }
+
+                        bytesSent += s1.Send(buffer, i, SocketFlags.None);
+
+                        double percentSent = (100.00 / bytesToSend) * bytesSent;
+                        TransferProgBar.Value = (int)Math.Floor(percentSent);
+                        progressLabel.Text = bytesSent + "/" + bytesToSend + " bytes sent (" + (int)Math.Floor(percentSent) + "%)";
+                        Application.DoEvents();
+                    }
+                    TransferProgBar.Value = 0;
+                    progressLabel.Text = "Select a file to transfer";
+                    Application.DoEvents();
                     s1.Close();
                 }
                 else
@@ -508,7 +562,7 @@ namespace WindowsApplication1
             catch (Exception es)
             {
                 MessageBox.Show(es.Message);
-            } 
+            }
         }
 
     }

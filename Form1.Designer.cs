@@ -59,6 +59,7 @@ namespace WindowsApplication1
             this.RewindButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.FastForwardButton = new System.Windows.Forms.Button();
+            this.progressLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -72,16 +73,16 @@ namespace WindowsApplication1
             // 
             // TransferProgBar
             // 
-            this.TransferProgBar.Location = new System.Drawing.Point(93, 449);
+            this.TransferProgBar.Location = new System.Drawing.Point(82, 439);
             this.TransferProgBar.Name = "TransferProgBar";
-            this.TransferProgBar.Size = new System.Drawing.Size(117, 23);
+            this.TransferProgBar.Size = new System.Drawing.Size(139, 23);
             this.TransferProgBar.TabIndex = 0;
             // 
             // TransferButton
             // 
-            this.TransferButton.Location = new System.Drawing.Point(12, 449);
+            this.TransferButton.Location = new System.Drawing.Point(12, 439);
             this.TransferButton.Name = "TransferButton";
-            this.TransferButton.Size = new System.Drawing.Size(75, 23);
+            this.TransferButton.Size = new System.Drawing.Size(61, 23);
             this.TransferButton.TabIndex = 1;
             this.TransferButton.Text = "Transfer";
             this.TransferButton.UseVisualStyleBackColor = true;
@@ -181,7 +182,7 @@ namespace WindowsApplication1
             this.FileTabs.Location = new System.Drawing.Point(12, 8);
             this.FileTabs.Name = "FileTabs";
             this.FileTabs.SelectedIndex = 0;
-            this.FileTabs.Size = new System.Drawing.Size(198, 435);
+            this.FileTabs.Size = new System.Drawing.Size(209, 425);
             this.FileTabs.TabIndex = 13;
             // 
             // AudioPage
@@ -190,7 +191,7 @@ namespace WindowsApplication1
             this.AudioPage.Location = new System.Drawing.Point(4, 22);
             this.AudioPage.Name = "AudioPage";
             this.AudioPage.Padding = new System.Windows.Forms.Padding(3);
-            this.AudioPage.Size = new System.Drawing.Size(190, 409);
+            this.AudioPage.Size = new System.Drawing.Size(201, 399);
             this.AudioPage.TabIndex = 0;
             this.AudioPage.Text = "Audio Files";
             this.AudioPage.UseVisualStyleBackColor = true;
@@ -201,7 +202,7 @@ namespace WindowsApplication1
             this.VideoPage.Location = new System.Drawing.Point(4, 22);
             this.VideoPage.Name = "VideoPage";
             this.VideoPage.Padding = new System.Windows.Forms.Padding(3);
-            this.VideoPage.Size = new System.Drawing.Size(190, 409);
+            this.VideoPage.Size = new System.Drawing.Size(201, 399);
             this.VideoPage.TabIndex = 1;
             this.VideoPage.Text = "Video Files";
             this.VideoPage.UseVisualStyleBackColor = true;
@@ -223,7 +224,7 @@ namespace WindowsApplication1
             this.PicturePage.Controls.Add(this.PictureListBox);
             this.PicturePage.Location = new System.Drawing.Point(4, 22);
             this.PicturePage.Name = "PicturePage";
-            this.PicturePage.Size = new System.Drawing.Size(190, 409);
+            this.PicturePage.Size = new System.Drawing.Size(201, 399);
             this.PicturePage.TabIndex = 2;
             this.PicturePage.Text = "Picture Files";
             this.PicturePage.UseVisualStyleBackColor = true;
@@ -361,6 +362,15 @@ namespace WindowsApplication1
             this.FastForwardButton.UseVisualStyleBackColor = true;
             this.FastForwardButton.Click += new System.EventHandler(this.FastForwardButton_Click);
             // 
+            // progressLabel
+            // 
+            this.progressLabel.AutoSize = true;
+            this.progressLabel.Location = new System.Drawing.Point(80, 462);
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(112, 13);
+            this.progressLabel.TabIndex = 21;
+            this.progressLabel.Text = "Select a file to transfer";
+            // 
             // Form1
             // 
             this.AccessibleName = "";
@@ -371,6 +381,7 @@ namespace WindowsApplication1
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(436, 481);
+            this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.FastForwardButton);
             this.Controls.Add(this.RewindButton);
             this.Controls.Add(this.PlayButton);
@@ -397,6 +408,7 @@ namespace WindowsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicturePreviewBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -432,6 +444,7 @@ namespace WindowsApplication1
         private System.Windows.Forms.Button FullScreenButton;
         private System.Windows.Forms.Button FastForwardButton;
         public AxWMPLib.AxWindowsMediaPlayer player;
+        public System.Windows.Forms.Label progressLabel;
     }
 }
 

@@ -62,7 +62,6 @@
             this.ipTextBox.Name = "ipTextBox";
             this.ipTextBox.Size = new System.Drawing.Size(80, 20);
             this.ipTextBox.TabIndex = 2;
-            this.ipTextBox.Text = "192.168.0.100";
             this.ipTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
@@ -89,7 +88,6 @@
             this.portTextBox.Name = "portTextBox";
             this.portTextBox.Size = new System.Drawing.Size(80, 20);
             this.portTextBox.TabIndex = 5;
-            this.portTextBox.Text = "8221";
             this.portTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IPConfigForm
