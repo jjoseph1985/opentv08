@@ -65,26 +65,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.WMPLib.dll" size="331776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.WMPLib.dll" size="274432">
       <assemblyIdentity name="Interop.WMPLib" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>aeEsQp7R4smp+P/JvtQieFXKmgo=</dsig:DigestValue>
+        <dsig:DigestValue>nzzUkbzx02GfRvJK5Urg2CeTE+Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenTV.exe" size="81408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenTV.exe" size="82432">
       <assemblyIdentity name="OpenTV" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>BPX6M9m+x6Srghv8ugmmWs++wiU=</dsig:DigestValue>
+        <dsig:DigestValue>1xIg7leqEi4X44x0DhG+iLh9PSw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

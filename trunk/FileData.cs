@@ -13,6 +13,7 @@ namespace WindowsApplication1
     public class FileData
     {
         public string Path;
+        public string dirPath;
         public string Name;
         public string Extension;
         public double Size;
@@ -24,6 +25,7 @@ namespace WindowsApplication1
         {
             Path = filePath;
             FileInfo FI = new FileInfo(Path);
+            dirPath = FI.DirectoryName;
             Name = FI.Name;
             Name = Name.Remove(Name.LastIndexOf('.'));
             Extension = Path.Substring(Path.LastIndexOf('.')+1);
@@ -52,6 +54,16 @@ namespace WindowsApplication1
         public string GetFilePath()
         {
             return Path;
+        }
+
+        public string GetFileDirPath()
+        {
+            return dirPath;
+        }
+
+        public string GetFileName()
+        {
+            return Name;
         }
 
         public string GetFileExtension()

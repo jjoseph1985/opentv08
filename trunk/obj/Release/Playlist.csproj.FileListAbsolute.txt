@@ -39,3 +39,9 @@ C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\OpenTV.exe.man
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\OpenTV.application
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\OpenTV.exe
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\OpenTV.pdb
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\Interop.WMPLib.dll
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\AxInterop.WMPLib.dll
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\Interop.WMPLib.dll
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\AxInterop.WMPLib.dll
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\Playlist.csproj.ResolveComReference.cache
+C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Release\WindowsApplication1.IPConfigForm.resources
