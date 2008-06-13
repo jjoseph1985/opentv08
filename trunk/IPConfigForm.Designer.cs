@@ -102,6 +102,8 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.OK);
             this.Name = "IPConfigForm";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "IP Info";
             this.ResumeLayout(false);
             this.PerformLayout();

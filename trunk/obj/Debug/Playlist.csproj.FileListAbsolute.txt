@@ -81,3 +81,22 @@ C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\Playlist.csproj.
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\Interop.WMPLib.dll
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\bin\Release\AxInterop.WMPLib.dll
 C:\Documents and Settings\Nate\Desktop\OpenTV08\trunk\obj\Debug\WindowsApplication1.IPConfigForm.resources
+D:\Projects\OpenTV\trunk\obj\Debug\Interop.WMPLib.dll
+D:\Projects\OpenTV\trunk\obj\Debug\AxInterop.WMPLib.dll
+D:\Projects\OpenTV\trunk\obj\Debug\Playlist.csproj.ResolveComReference.cache
+D:\Projects\OpenTV\trunk\obj\Debug\OpenTV.exe
+D:\Projects\OpenTV\trunk\obj\Debug\OpenTV.pdb
+D:\Projects\OpenTV\trunk\bin\Release\OpenTV.exe.manifest
+D:\Projects\OpenTV\trunk\bin\Release\OpenTV.application
+D:\Projects\OpenTV\trunk\bin\Release\OpenTV.exe
+D:\Projects\OpenTV\trunk\bin\Release\OpenTV.pdb
+D:\Projects\OpenTV\trunk\bin\Release\Interop.WMPLib.dll
+D:\Projects\OpenTV\trunk\bin\Release\AxInterop.WMPLib.dll
+D:\Projects\OpenTV\trunk\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.Form1.resources
+D:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.IPConfigForm.resources
+D:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.PicturePreviewForm.resources
+D:\Projects\OpenTV\trunk\obj\Debug\WindowsApplication1.Properties.Resources.resources
+D:\Projects\OpenTV\trunk\obj\Debug\Playlist.csproj.GenerateResource.Cache
+D:\Projects\OpenTV\trunk\obj\Debug\OpenTV.exe.manifest
+D:\Projects\OpenTV\trunk\obj\Debug\OpenTV.application
