@@ -365,11 +365,12 @@ namespace WindowsApplication1
             // progressLabel
             // 
             this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(80, 462);
+            this.progressLabel.Location = new System.Drawing.Point(79, 462);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(112, 13);
             this.progressLabel.TabIndex = 21;
             this.progressLabel.Text = "Select a file to transfer";
+            this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
