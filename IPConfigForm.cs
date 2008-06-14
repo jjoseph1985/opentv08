@@ -17,6 +17,7 @@ namespace WindowsApplication1
             z = y;
             ipTextBox.Text = z.chosenIP;
             portTextBox.Text = z.chosenPort;
+            ipTextBox.Focus();
         }
 
         private void OKButton_Click(object sender, EventArgs e)
