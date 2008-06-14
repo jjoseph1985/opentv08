@@ -1,0 +1,5 @@
+C:\Documents and Settings\Jeremy\Desktop\Download\Server\bin\Release\SocketServer.exe
+C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Release\beginSocketServer.Program.resources
+C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Release\SocketServer.csproj.GenerateResource.Cache
+C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Release\SocketServer.exe
