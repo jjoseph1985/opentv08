@@ -60,6 +60,7 @@ namespace WindowsApplication1
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.FastForwardButton = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -364,13 +365,23 @@ namespace WindowsApplication1
             // 
             // progressLabel
             // 
-            this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(79, 462);
+            this.progressLabel.Location = new System.Drawing.Point(13, 464);
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(112, 13);
+            this.progressLabel.Size = new System.Drawing.Size(209, 13);
             this.progressLabel.TabIndex = 21;
             this.progressLabel.Text = "Select a file to transfer";
             this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(12, 439);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(61, 23);
+            this.CancelButton.TabIndex = 22;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Visible = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // Form1
             // 
@@ -382,6 +393,7 @@ namespace WindowsApplication1
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(436, 481);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.FastForwardButton);
             this.Controls.Add(this.RewindButton);
@@ -398,6 +410,7 @@ namespace WindowsApplication1
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "OpenTV File Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.FileTabs.ResumeLayout(false);
@@ -409,8 +422,12 @@ namespace WindowsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicturePreviewBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
+        }
+
+        void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            CancelButton_Click(null, null);
         }
 
         #endregion
@@ -446,6 +463,7 @@ namespace WindowsApplication1
         private System.Windows.Forms.Button FastForwardButton;
         public AxWMPLib.AxWindowsMediaPlayer player;
         public System.Windows.Forms.Label progressLabel;
+        private System.Windows.Forms.Button CancelButton;
     }
 }
 

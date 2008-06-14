@@ -17,6 +17,7 @@ namespace WindowsApplication1
         public string Name;
         public string Extension;
         public double Size;
+        public int sizeInBytes;
         public string fileType;
 
         public FileData() { }
@@ -30,6 +31,7 @@ namespace WindowsApplication1
             Name = Name.Remove(Name.LastIndexOf('.'));
             Extension = Path.Substring(Path.LastIndexOf('.')+1);
             Size = Convert.ToDouble(FI.Length)/1048576.00;
+            sizeInBytes = (int)FI.Length;
 
             if ((FI.Extension == ".mp3") || (FI.Extension == ".m4a") || (FI.Extension == ".wav") || (FI.Extension == ".wma"))
                 fileType = "Audio";
@@ -48,7 +50,12 @@ namespace WindowsApplication1
 
         public string GetFileSize()
         {
-           return Size.ToString("0.00") + " MB";
+            return Size.ToString("0.00") + " MB";
+        }
+
+        public int GetFileSizeInBytes()
+        {
+            return sizeInBytes;
         }
 
         public string GetFilePath()

@@ -41,7 +41,7 @@
             this.OK.Location = new System.Drawing.Point(12, 126);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
-            this.OK.TabIndex = 0;
+            this.OK.TabIndex = 2;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OKButton_Click);
@@ -51,7 +51,7 @@
             this.cancelButton.Location = new System.Drawing.Point(93, 126);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -61,7 +61,7 @@
             this.ipTextBox.Location = new System.Drawing.Point(50, 35);
             this.ipTextBox.Name = "ipTextBox";
             this.ipTextBox.Size = new System.Drawing.Size(80, 20);
-            this.ipTextBox.TabIndex = 2;
+            this.ipTextBox.TabIndex = 0;
             this.ipTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
@@ -87,7 +87,7 @@
             this.portTextBox.Location = new System.Drawing.Point(50, 89);
             this.portTextBox.Name = "portTextBox";
             this.portTextBox.Size = new System.Drawing.Size(80, 20);
-            this.portTextBox.TabIndex = 5;
+            this.portTextBox.TabIndex = 1;
             this.portTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IPConfigForm
@@ -113,10 +113,10 @@
         #endregion
 
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TextBox ipTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox portTextBox;
         public System.Windows.Forms.Button OK;
+        public System.Windows.Forms.TextBox ipTextBox;
     }
 }
