@@ -24,8 +24,8 @@ namespace WindowsApplication1
         ContextMenu label4ContextMenu = new ContextMenu();
         public bool movieFlag = false;
         public bool stopTransferFlag = false;
-        public string chosenIP = "132.170.200.123";
-        public string chosenPort = "8221";
+        public string chosenIP = "";
+        public string chosenPort = "";
 
         public Form1()
         {
@@ -42,7 +42,12 @@ namespace WindowsApplication1
             this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
             this.PictureListBox.KeyDown += new KeyEventHandler(PictureListBox_KeyDown);
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
- 
+
+            StreamReader configStream = File.OpenText(Application.StartupPath + "\\config.txt");
+            chosenIP = configStream.ReadLine();
+            chosenPort = configStream.ReadLine();
+            configStream.Close();
+
             ReadXML();
 
             this.Menu = mainMenu;
@@ -205,7 +210,7 @@ namespace WindowsApplication1
         private void ConnSet_Clicked(object sender, System.EventArgs e)
         {
             IPConfigForm ip = new IPConfigForm(this);
-            ip.Show();
+            ip.ShowDialog();
         }
 
         private void FolderOpen_Clicked(object sender, System.EventArgs e)
@@ -433,6 +438,7 @@ namespace WindowsApplication1
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
+            player.uiMode = "none";
             FileData FD = new FileData();
             if (player.playState == WMPPlayState.wmppsPaused)
             {
@@ -492,99 +498,120 @@ namespace WindowsApplication1
             TransferButton.Visible = false;
             try
             {
-                if (chosenIP != "" && chosenPort != "" && chosenPort != null && chosenIP != null)
+                if (chosenIP == "" || chosenPort == "" || chosenPort == null || chosenIP == null)
+                    throw new SocketException();
+
+                // SELECTING WHAT FILE TYPE FOR ITEM AND MAKE FILEDATA
+                FileData FD = new FileData();
+                if (FileTabs.SelectedTab == AudioPage)
+                    FD = (FileData)AudioListBox.SelectedItem;
+                else if (FileTabs.SelectedTab == VideoPage)
+                    FD = (FileData)VideoListBox.SelectedItem;
+                else if (FileTabs.SelectedTab == PicturePage)
+                    FD = (FileData)PictureListBox.SelectedItem;
+
+                // MAKE SURE FILE IS NOT PLAYING AND IS CLOSED
+                if (player.playState == WMPPlayState.wmppsPlaying)
                 {
-                    // CONNECTION
-                    Socket s1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    String szIPSelected = chosenIP;
-                    String szPort = chosenPort;
-                    int alPort = System.Convert.ToInt16(szPort, 10);
-                    System.Net.IPAddress remoteIPAddress = System.Net.IPAddress.Parse(szIPSelected);
-                    System.Net.IPEndPoint remoteEndPoint = new System.Net.IPEndPoint(remoteIPAddress, alPort);
-                    s1.Connect(remoteEndPoint);
-
-                    // SELECTING WHAT FILE TYPE FOR ITEM AND MAKE FILEDATA
-                    FileData FD = new FileData();
-                    if (FileTabs.SelectedTab == AudioPage)
-                        FD = (FileData)AudioListBox.SelectedItem;
-                    else if (FileTabs.SelectedTab == VideoPage)
-                        FD = (FileData)VideoListBox.SelectedItem;
-                    else if (FileTabs.SelectedTab == PicturePage)
-                        FD = (FileData)PictureListBox.SelectedItem;
-
-                    // FILE VARS
-                    string fileName = FD.GetFileName() + "." + FD.GetFileExtension();
-                    string filePath = FD.GetFileDirPath() + "\\";
-                    byte[] fileSize = BitConverter.GetBytes(FD.GetFileSizeInBytes());
-
-                    // FILE NAME VARS
-                    byte[] fileNameArray = Encoding.ASCII.GetBytes(fileName);
-                    byte[] fileNameLen = BitConverter.GetBytes(fileNameArray.Length);
-                    byte[] fileSizeLen = BitConverter.GetBytes(fileSize.Length);
-                   
-
-                    //Send packet containing all information
-                    byte[] clientDataInformation = new byte[4 + fileNameArray.Length + 4 + fileSize.Length];
-                    fileNameLen.CopyTo(clientDataInformation, 0);
-                    fileNameArray.CopyTo(clientDataInformation, 4);
-                    fileSizeLen.CopyTo(clientDataInformation, 4 + fileNameArray.Length);
-                    fileSize.CopyTo(clientDataInformation, 4 + fileNameArray.Length + fileSizeLen.Length);
-                    s1.Send(clientDataInformation, clientDataInformation.Length, SocketFlags.None);
-
-                    //Send packets containing the actuall file data
-                    TransferProgBar.Minimum = 0;
-                    TransferProgBar.Maximum = 100;
-                    TransferProgBar.Value = 0;
-
-                    FileStream FS = new FileStream(filePath + fileName, FileMode.Open);
-                    byte[] buffer = new byte[1024];
-                    int bytes = 0;
-                    double percentSent = 0;
-
-                    Int32 k;
-                    Int32 bytesProcessed = 0;
-                    Int32 bytesToSend = BitConverter.ToInt32(fileSize, 0);
-                    for (k = 0; k + 1024 < bytesToSend; k += 1024)
+                    if (player.URL == FD.GetFilePath())
                     {
-                        if (stopTransferFlag == true)
-                            break;
-
-                        bytes = FS.Read(buffer, 0, 1024);
-                        bytesProcessed += bytes;
-                        s1.Send(buffer);
-                        Array.Clear(buffer, 0, 1024);
-
-                        percentSent = (100.00 / bytesToSend) * bytesProcessed;
-                        TransferProgBar.Value = (int)Math.Floor(percentSent);
-                        progressLabel.Text = bytesProcessed + "/" + bytesToSend + " bytes sent (" + (int)Math.Floor(percentSent) + "%)";
-                        Application.DoEvents();
+                        player.Ctlcontrols.stop();
+                        player.URL = "";
                     }
+                }
 
-                    if (stopTransferFlag == false)
-                    {
-                        FS.Read(buffer, 0, bytesToSend - bytesProcessed);
-                        s1.Send(buffer, 0, bytesToSend - bytesProcessed, SocketFlags.None);
-                    }
-                    else
-                    {
-                        stopTransferFlag = false;
-                    }
-                    
-                    TransferProgBar.Value = 0;
-                    progressLabel.Text = "Select a file to transfer";
-                    TransferButton.Visible = true;
-                    CancelButton.Visible = false;
+                // CONNECTION
+                Socket s1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                String szIPSelected = chosenIP;
+                String szPort = chosenPort;
+                int alPort = System.Convert.ToInt16(szPort, 10);
+                System.Net.IPAddress remoteIPAddress = System.Net.IPAddress.Parse(szIPSelected);
+                System.Net.IPEndPoint remoteEndPoint = new System.Net.IPEndPoint(remoteIPAddress, alPort);
+                s1.Connect(remoteEndPoint);
+
+
+                // FILE VARS
+                string fileName = FD.GetFileName() + "." + FD.GetFileExtension();
+                string filePath = FD.GetFileDirPath() + "\\";
+                byte[] fileSize = BitConverter.GetBytes(FD.GetFileSizeInBytes());
+
+
+                // FILE NAME VARS
+                byte[] fileNameArray = Encoding.ASCII.GetBytes(fileName);
+                byte[] fileNameLen = BitConverter.GetBytes(fileNameArray.Length);
+                byte[] fileSizeLen = BitConverter.GetBytes(fileSize.Length);
+
+                // SEND FIRST PACKET WITH FILESIZE AND FILE INFORMATION
+                byte[] clientDataInformation = new byte[4 + fileNameArray.Length + 4 + fileSize.Length];
+                fileNameLen.CopyTo(clientDataInformation, 0);
+                fileNameArray.CopyTo(clientDataInformation, 4);
+                fileSizeLen.CopyTo(clientDataInformation, 4 + fileNameArray.Length);
+                fileSize.CopyTo(clientDataInformation, 4 + fileNameArray.Length + fileSizeLen.Length);
+                s1.Send(clientDataInformation, clientDataInformation.Length, SocketFlags.None);
+
+                // SEND PACKETS CONTAINING ACTUAL DATA IN PACKETS OF 1024 BYTES
+                TransferProgBar.Minimum = 0;
+                TransferProgBar.Maximum = 100;
+                TransferProgBar.Value = 0;
+
+                FileStream FS = new FileStream(filePath + fileName, FileMode.Open);
+                byte[] buffer = new byte[1024];
+                int bytes = 0;
+                double percentSent = 0;
+
+                Int32 k;
+                Int32 bytesProcessed = 0;
+                Int32 bytesToSend = BitConverter.ToInt32(fileSize, 0);
+                for (k = 0; k + 1024 < bytesToSend; k += 1024)
+                {
+                    if (stopTransferFlag == true)
+                        break;
+
+                    bytes = FS.Read(buffer, 0, 1024);
+                    bytesProcessed += bytes;
+                    s1.Send(buffer);
+                    Array.Clear(buffer, 0, 1024);
+
+                    percentSent = (100.00 / bytesToSend) * bytesProcessed;
+                    TransferProgBar.Value = (int)Math.Floor(percentSent);
+                    progressLabel.Text = bytesProcessed + "/" + bytesToSend + " bytes sent (" + (int)Math.Floor(percentSent) + "%)";
                     Application.DoEvents();
-                    
-                    FS.Close();
-                    s1.Close();
+                }
+
+                if (stopTransferFlag == false)
+                {
+                    FS.Read(buffer, 0, bytesToSend - bytesProcessed);
+                    s1.Send(buffer, 0, bytesToSend - bytesProcessed, SocketFlags.None);
                 }
                 else
-                    MessageBox.Show("No Data Entered for IP Address and/or Port Number. Please Check The Settings From The File Menu.", "Error. Missing Info.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    stopTransferFlag = false;
+                }
+
+                TransferProgBar.Value = 0;
+                progressLabel.Text = "Select a file to transfer";
+                TransferButton.Visible = true;
+                CancelButton.Visible = false;
+                Application.DoEvents();
+
+                FS.Close();
+                s1.Close();
             }
-            catch (Exception es)
+            catch (SocketException)
             {
-                MessageBox.Show(es.Message);
+                MessageBox.Show("Connection could not be made to OpenTV device.  Check IP configuration and try again.", "Error. Bad Connection.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An internal error has occured.  Please try again or restart the program.", "Error. Internal Error.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                TransferProgBar.Value = 0;
+                progressLabel.Text = "Select a file to transfer";
+                TransferButton.Visible = true;
+                CancelButton.Visible = false;
+                Application.DoEvents();
             }
         }
 

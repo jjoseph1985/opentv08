@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsApplication1
@@ -17,13 +18,18 @@ namespace WindowsApplication1
             z = y;
             ipTextBox.Text = z.chosenIP;
             portTextBox.Text = z.chosenPort;
-            ipTextBox.Focus();
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
             z.chosenIP = ipTextBox.Text;
             z.chosenPort = portTextBox.Text;
+
+            TextWriter configFile = new StreamWriter(Application.StartupPath + "\\config.txt.");
+            configFile.WriteLine(z.chosenIP);
+            configFile.WriteLine(z.chosenPort);
+            configFile.Close();
+
             this.Close();
         }
 

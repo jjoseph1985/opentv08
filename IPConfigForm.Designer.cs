@@ -58,16 +58,18 @@
             // 
             // ipTextBox
             // 
-            this.ipTextBox.Location = new System.Drawing.Point(50, 35);
+            this.ipTextBox.Location = new System.Drawing.Point(41, 32);
+            this.ipTextBox.MaxLength = 15;
             this.ipTextBox.Name = "ipTextBox";
-            this.ipTextBox.Size = new System.Drawing.Size(80, 20);
+            this.ipTextBox.Size = new System.Drawing.Size(99, 20);
             this.ipTextBox.TabIndex = 0;
+            this.ipTextBox.Text = "000.000.000.000";
             this.ipTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 16);
+            this.label1.Location = new System.Drawing.Point(61, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 3;
@@ -84,10 +86,12 @@
             // 
             // portTextBox
             // 
-            this.portTextBox.Location = new System.Drawing.Point(50, 89);
+            this.portTextBox.Location = new System.Drawing.Point(72, 89);
+            this.portTextBox.MaxLength = 4;
             this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(80, 20);
+            this.portTextBox.Size = new System.Drawing.Size(37, 20);
             this.portTextBox.TabIndex = 1;
+            this.portTextBox.Text = "0000";
             this.portTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IPConfigForm
