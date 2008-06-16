@@ -286,13 +286,14 @@ namespace WindowsApplication1
             // 
             // player
             // 
+            this.player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
             this.player.Enabled = true;
             this.player.Location = new System.Drawing.Point(6, 19);
             this.player.Name = "player";
-            this.player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
             this.player.Size = new System.Drawing.Size(177, 121);
             this.player.TabIndex = 1;
             this.player.Visible = false;
+            this.player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(player_PlayStateChange);
             // 
             // PicturePreviewBox
             // 
@@ -423,6 +424,19 @@ namespace WindowsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.PicturePreviewBox)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        void player_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            switch (e.newState)
+            {
+                case 1:    // Stopped
+                case 2:    // Paused
+                case 8:    // MediaEnded
+                case 3:    // Playing
+                    player.uiMode = "none";
+                    break;
+            }
         }
 
         void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
