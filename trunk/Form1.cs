@@ -41,7 +41,6 @@ namespace WindowsApplication1
             this.PictureListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragDrop);
             this.PictureListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.PictureListBox_DragEnter);
             this.PictureListBox.KeyDown += new KeyEventHandler(PictureListBox_KeyDown);
-            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
 
             StreamReader configStream = File.OpenText(Application.StartupPath + "\\config.txt");
             chosenIP = configStream.ReadLine();
@@ -60,13 +59,6 @@ namespace WindowsApplication1
             miFile.MenuItems.Add("-");
             miFile.MenuItems.Add(new MenuItem("&Exit", new EventHandler(this.FileExit_Clicked), Shortcut.CtrlX));
         }
-
-        void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            this.player.fullScreen = false;
-            this.player.uiMode = "None";
-        }
-
 
 
         /// <summary>
@@ -361,6 +353,7 @@ namespace WindowsApplication1
                 {
                     player.uiMode = "full";
                     player.fullScreen = true;
+                    fullscreenTimer.Enabled = true;
                 }
                 else
                     MessageBox.Show("Please Start Video File First.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -438,7 +431,6 @@ namespace WindowsApplication1
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            player.uiMode = "none";
             FileData FD = new FileData();
             if (player.playState == WMPPlayState.wmppsPaused)
             {
@@ -533,8 +525,8 @@ namespace WindowsApplication1
                 // FILE VARS
                 string fileName = FD.GetFileName() + "." + FD.GetFileExtension();
                 string filePath = FD.GetFileDirPath() + "\\";
-                byte[] fileSize = BitConverter.GetBytes(FD.GetFileSizeInBytes());
-
+                //byte[] fileSize = BitConverter.GetBytes(FD.GetFileSizeInBytes());
+                byte[] fileSize = Encoding.ASCII.GetBytes(FD.GetFileSizeInBytes());
 
                 // FILE NAME VARS
                 byte[] fileNameArray = Encoding.ASCII.GetBytes(fileName);
@@ -561,7 +553,8 @@ namespace WindowsApplication1
 
                 Int32 k;
                 Int32 bytesProcessed = 0;
-                Int32 bytesToSend = BitConverter.ToInt32(fileSize, 0);
+                String bytesToSendString = Encoding.ASCII.GetString(fileSize);
+                Int32 bytesToSend = Convert.ToInt32(bytesToSendString);
                 for (k = 0; k + 1024 < bytesToSend; k += 1024)
                 {
                     if (stopTransferFlag == true)
@@ -620,6 +613,15 @@ namespace WindowsApplication1
             stopTransferFlag = true;
             TransferButton.Visible = true;
             CancelButton.Visible = false;
+        }
+
+        private void fullscreenTimer_Tick(object sender, EventArgs e)
+        {
+            if (player.fullScreen == false)
+            {
+                fullscreenTimer.Enabled = false;
+                player.uiMode = "none";
+            }
         }
 
     }
