@@ -53,9 +53,9 @@ namespace WindowsApplication1
             return Size.ToString("0.00") + " MB";
         }
 
-        public int GetFileSizeInBytes()
+        public string GetFileSizeInBytes()
         {
-            return sizeInBytes;
+            return sizeInBytes.ToString();
         }
 
         public string GetFilePath()

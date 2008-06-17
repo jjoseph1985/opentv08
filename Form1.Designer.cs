@@ -28,6 +28,7 @@ namespace WindowsApplication1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TransferProgBar = new System.Windows.Forms.ProgressBar();
             this.TransferButton = new System.Windows.Forms.Button();
@@ -61,6 +62,7 @@ namespace WindowsApplication1
             this.FastForwardButton = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.fullscreenTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.FileTabs.SuspendLayout();
             this.AudioPage.SuspendLayout();
@@ -286,14 +288,13 @@ namespace WindowsApplication1
             // 
             // player
             // 
-            this.player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
             this.player.Enabled = true;
             this.player.Location = new System.Drawing.Point(6, 19);
             this.player.Name = "player";
+            this.player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("player.OcxState")));
             this.player.Size = new System.Drawing.Size(177, 121);
             this.player.TabIndex = 1;
             this.player.Visible = false;
-            this.player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(player_PlayStateChange);
             // 
             // PicturePreviewBox
             // 
@@ -384,6 +385,10 @@ namespace WindowsApplication1
             this.CancelButton.Visible = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // fullscreenTimer
+            // 
+            this.fullscreenTimer.Tick += new System.EventHandler(this.fullscreenTimer_Tick);
+            // 
             // Form1
             // 
             this.AccessibleName = "";
@@ -426,19 +431,6 @@ namespace WindowsApplication1
 
         }
 
-        void player_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            switch (e.newState)
-            {
-                case 1:    // Stopped
-                case 2:    // Paused
-                case 8:    // MediaEnded
-                case 3:    // Playing
-                    player.uiMode = "none";
-                    break;
-            }
-        }
-
         void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             CancelButton_Click(null, null);
@@ -478,6 +470,7 @@ namespace WindowsApplication1
         public AxWMPLib.AxWindowsMediaPlayer player;
         public System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Button CancelButton;
+        public System.Windows.Forms.Timer fullscreenTimer;
     }
 }
 
