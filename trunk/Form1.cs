@@ -102,7 +102,11 @@ namespace WindowsApplication1
         {
             PicturePreviewBox.Visible = false;
             if (AudioListBox.SelectedIndex != -1)
-                PopulateFields((FileData)this.AudioListBox.SelectedItem);               
+            {
+                PopulateFields((FileData)this.AudioListBox.SelectedItem);
+                if(player.playState == WMPPlayState.wmppsPaused)
+                    player.URL = "";
+            }
         }
 
         private void AudioListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -128,7 +132,11 @@ namespace WindowsApplication1
         {
             PicturePreviewBox.Visible = false;
             if (VideoListBox.SelectedIndex != -1)
+            {
                 PopulateFields((FileData)this.VideoListBox.SelectedItem);
+                if(player.playState == WMPPlayState.wmppsPaused)
+                    player.URL = "";
+            }
         }
 
         private void VideoListBox_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
@@ -156,6 +164,7 @@ namespace WindowsApplication1
                 {
                     player.Ctlcontrols.stop();
                     movieFlag = false;
+                    player.URL = "";
                 }
             }
             PicturePreviewBox.Visible = true;
@@ -372,6 +381,9 @@ namespace WindowsApplication1
 
             string filename = Application.StartupPath + "\\" + type + ".xml";
 
+            if (Directory.Exists(filename))
+                File.Delete(filename);
+
             ArrayList theFiles = new ArrayList();
             foreach (FileData theFile in myBox.Items)
             {
@@ -441,7 +453,8 @@ namespace WindowsApplication1
                 try
                 {
                     if (FileTabs.SelectedTab == AudioPage)
-                    {
+                    {                   
+                        movieFlag = false;
                         player.Visible = true;
                         FD = (FileData)AudioListBox.SelectedItem;
                         player.URL = FD.GetFilePath();
@@ -564,11 +577,26 @@ namespace WindowsApplication1
                     bytesProcessed += bytes;
                     s1.Send(buffer);
                     Array.Clear(buffer, 0, 1024);
-
-                    percentSent = (100.00 / bytesToSend) * bytesProcessed;
-                    TransferProgBar.Value = (int)Math.Floor(percentSent);
-                    progressLabel.Text = bytesProcessed + "/" + bytesToSend + " bytes sent (" + (int)Math.Floor(percentSent) + "%)";
-                    Application.DoEvents();
+                    if (bytesToSend > 2097152)
+                    {
+                        if (bytesProcessed % 1048576 == 0)
+                        {
+                            percentSent = (100.00 / bytesToSend) * bytesProcessed;
+                            TransferProgBar.Value = (int)Math.Floor(percentSent);
+                            progressLabel.Text = bytesProcessed / 1024 + "/" + bytesToSend / 1024 + " kb sent (" + (int)Math.Floor(percentSent) + "%)";
+                            Application.DoEvents();
+                        }
+                    }
+                    else
+                    {
+                        if (bytesProcessed % 1024 == 0)
+                        {
+                            percentSent = (100.00 / bytesToSend) * bytesProcessed;
+                            TransferProgBar.Value = (int)Math.Floor(percentSent);
+                            progressLabel.Text = bytesProcessed + "/" + bytesToSend  + " bytes sent (" + (int)Math.Floor(percentSent) + "%)";
+                            Application.DoEvents();
+                        }
+                    }
                 }
 
                 if (stopTransferFlag == false)

@@ -5,3 +5,5 @@ C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Debug\SocketServer.
 C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Debug\SocketServer.exe
 C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Debug\SocketServer.pdb
 C:\Documents and Settings\Jeremy\Desktop\Download\Server\obj\Debug\beginSocketServer.Program.resources
+D:\Projects\OpenTV\trunk\Server\obj\Debug\SocketServer.exe
+D:\Projects\OpenTV\trunk\Server\obj\Debug\SocketServer.pdb
