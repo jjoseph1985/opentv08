@@ -381,7 +381,7 @@ namespace WindowsApplication1
 
             string filename = Application.StartupPath + "\\" + type + ".xml";
 
-            if (Directory.Exists(filename))
+            if (File.Exists(filename))
                 File.Delete(filename);
 
             ArrayList theFiles = new ArrayList();
@@ -501,6 +501,9 @@ namespace WindowsApplication1
         {
             CancelButton.Visible = true;
             TransferButton.Visible = false;
+            progressLabel.Text = "Transfering...";
+            Application.DoEvents();
+
             try
             {
                 if (chosenIP == "" || chosenPort == "" || chosenPort == null || chosenIP == null)
@@ -579,7 +582,7 @@ namespace WindowsApplication1
                     Array.Clear(buffer, 0, 1024);
                     if (bytesToSend > 2097152)
                     {
-                        if (bytesProcessed % 1048576 == 0)
+                        if (bytesProcessed % 524288 == 0)
                         {
                             percentSent = (100.00 / bytesToSend) * bytesProcessed;
                             TransferProgBar.Value = (int)Math.Floor(percentSent);
