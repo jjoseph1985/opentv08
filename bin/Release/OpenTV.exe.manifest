@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
-  <asmv1:assemblyIdentity name="OpenTV.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="OpenTV.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="icon copy.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -60,7 +60,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NZBCHY4Lh2tuSDeS36kjSgKZYeA=</dsig:DigestValue>
+        <dsig:DigestValue>7f/AP88deQzsa4OW8zsJQ5MEekM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -72,22 +72,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>CvGsiSBhm0RrfKci+jAkXEvYzcM=</dsig:DigestValue>
+        <dsig:DigestValue>/ypcdYCWbm4VokdbI1J2sVu7WbA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenTV.exe" size="81408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenTV.exe" size="83456">
       <assemblyIdentity name="OpenTV" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>JizDmgpQHdqcGkv0qcdH2QtpObg=</dsig:DigestValue>
+        <dsig:DigestValue>Ube7GqTuKUiaZjjivDStGJOiYlI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="config.txt" size="21">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>QkD/9O16LaBho6rnAZJoyxFIcbU=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="icon copy.ico" size="3494">
     <hash>
       <dsig:Transforms>

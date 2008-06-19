@@ -31,7 +31,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ProductName>OpenTV File Management Software</ProductName>
+    <PublisherName>OpenTV</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -119,6 +124,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="config.txt" />
     <Content Include="icon copy.ico" />
   </ItemGroup>
   <ItemGroup>
